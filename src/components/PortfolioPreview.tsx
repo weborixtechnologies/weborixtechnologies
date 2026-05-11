@@ -37,33 +37,37 @@ const PortfolioPreview = () => {
     <section className="py-16 sm:py-20 lg:py-24 bg-background overflow-hidden">
       <div className="w-full px-3 sm:px-4 lg:px-5">
 
-        {/* Header */}
-        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-10 sm:mb-14 max-w-7xl mx-auto">
+        {/* Header update  */}
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-14 w-full px-4 sm:px-6">
+  
+  {/* LEFT */}
+  <div className="max-w-2xl">
+    <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground mb-3">
+      Selected work
+    </p>
 
-          <div className="max-w-2xl">
-            <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground mb-3">
-              Selected work
-            </p>
+    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground leading-[1.05] tracking-tight">
+      Recent projects,{" "}
+      <span className="relative inline-block">
+        <span className="relative z-10">real outcomes.</span>
 
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground leading-[1.05] tracking-tight">
-              Recent projects,{" "}
-              <span className="relative inline-block">
-                <span className="relative z-10">real outcomes.</span>
+        <span className="absolute bottom-1 left-0 right-0 h-2 sm:h-3 bg-dexon-yellow rounded-full -z-0" />
+      </span>
+    </h2>
+  </div>
 
-                <span className="absolute bottom-1 left-0 right-0 h-2 sm:h-3 bg-dexon-yellow rounded-full -z-0" />
-              </span>
-            </h2>
-          </div>
+  {/* RIGHT */}
+  <div className="flex justify-end sm:ml-auto">
+    <Link
+      to="/portfolio"
+      className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-semibold transition-all duration-300 hover:scale-105"
+    >
+      View all work
 
-          <Link
-            to="/portfolio"
-            className="group inline-flex items-center gap-2 self-start sm:self-auto px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-semibold transition-all duration-300 hover:scale-105"
-          >
-            View all work
-
-            <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
-          </Link>
-        </div>
+      <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
+    </Link>
+  </div>
+</div>
 
         {/* Cards */}
         <div className="flex flex-col lg:flex-row gap-4">
