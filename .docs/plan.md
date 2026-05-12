@@ -63,3 +63,5 @@ Reuses existing semantic tokens only: `bg-background`, `bg-dexon-cream`, `bg-dex
 - Each page is fully responsive (mobile / tablet portrait + landscape / desktop) using the same `sm: md: lg: xl:` rhythm already used across the site
 - Smooth scroll-to-top on route change (small `ScrollToTop` helper inside `App.tsx`)
 - Mobile menu closes automatically when a service link is tapped
+
+- Mobile menu closes automatically when a service link is tapped

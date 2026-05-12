@@ -12,7 +12,6 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import CtaSection from "@/components/CtaSection";
 
 const values = [
   { Icon: Target, title: "Outcome-driven", desc: "Every pixel and every line of code ties back to a measurable business goal." },
@@ -21,7 +20,11 @@ const values = [
   { Icon: ShieldCheck, title: "Built to last", desc: "Performance, accessibility and maintainability are non-negotiable." },
 ];
 
-
+const team = [
+  { name: "Sujan Das", role: "Design & Developer", initials: "SD", tint: "bg-dexon-yellow/40" },
+  { name: "Jaydeb Pal", role: "Growth & Performance ", initials: "JP", tint: "bg-dexon-cyan/40" },
+  { name: "Utsab Ghosh", role: "Strategy & Engineering Lead", initials: "UB", tint: "bg-dexon-green/40" },
+];
 
 const milestones = [
   { year: "2021", title: "Weborix is born", desc: "Started as a two-person studio building lean websites for founders." },
@@ -231,13 +234,77 @@ const About = () => {
         </div>
       </section>
 
+      {/* TEAM */}
+      <section className="py-16 sm:py-20 lg:py-24">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+          <div className="max-w-2xl mb-12 sm:mb-14">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground mb-4">
+              The Team
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1]">
+              A small team of{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">senior operators</span>
+                <span className="absolute left-0 right-0 bottom-1 sm:bottom-2 h-2 sm:h-3 bg-dexon-yellow -z-0" />
+              </span>
+              .
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
+            {team.map((p) => (
+              <div
+                key={p.name}
+                className="group bg-card rounded-3xl p-5 sm:p-6 border border-border hover:-translate-y-1.5 transition-all duration-500"
+              >
+                <div className={`relative aspect-square rounded-2xl ${p.tint} flex items-center justify-center mb-5`}>
+                  <span className="text-3xl sm:text-4xl font-black tracking-tight">{p.initials}</span>
+                </div>
+                <h3 className="text-base sm:text-lg font-black tracking-tight">{p.name}</h3>
+                <p className="text-xs sm:text-sm text-muted-foreground mt-1">{p.role}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
 
       {/* CTA */}
-      
-      <CtaSection />
+      <section className="relative py-20 sm:py-24 lg:py-28 bg-dexon-yellow text-foreground text-center overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-30">
+          <div className="w-[40rem] h-[40rem] bg-background rounded-full blur-3xl" />
+        </div>
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl relative">
+          <Sparkles className="w-8 h-8 mx-auto mb-5" />
+          <h2 className="text-3xl sm:text-4xl lg:text-6xl font-black tracking-tight leading-[1.05]">
+            Let's build something
+            <br />
+            worth talking about.
+          </h2>
+          <p className="mt-5 sm:mt-6 text-base sm:text-lg max-w-xl mx-auto opacity-80">
+            Tell us where you are, where you want to be, and we'll show you the
+            shortest, sharpest path between the two.
+          </p>
+          <div className="mt-8 flex flex-wrap justify-center gap-3 sm:gap-4">
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full bg-foreground text-background text-sm font-bold hover:scale-105 transition-transform"
+            >
+              Start a project <ArrowUpRight className="w-4 h-4" />
+            </Link>
+            <Link
+              to="/portfolio"
+              className="inline-flex items-center gap-2 px-7 sm:px-8 py-3.5 sm:py-4 rounded-full border-2 border-foreground/20 text-foreground text-sm font-bold hover:bg-foreground/5 transition-colors"
+            >
+              See the work
+            </Link>
+          </div>
+        </div>
+      </section>
+
       <Footer />
     </div>
   );
 };
 
 export default About;
+ //comment added for testing
