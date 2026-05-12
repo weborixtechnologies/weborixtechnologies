@@ -19,7 +19,7 @@ const WhatsAppButton = () => {
         className="transition-transform duration-300 hover:scale-110"
       >
         <img
-          src="/IMG/whatsapp.png"
+          src="IMG/whatsapp.png"
           alt="WhatsApp"
           className="w-14 h-14"
         />
