@@ -12,6 +12,7 @@ import {
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import CtaSection from "@/components/CtaSection";
 
 const values = [
   { Icon: Target, title: "Outcome-driven", desc: "Every pixel and every line of code ties back to a measurable business goal." },
@@ -308,7 +309,7 @@ const About = () => {
       </section>
       <CtaSection />
 */}
-
+      <CtaSection />
       <Footer />
     </div>
   );

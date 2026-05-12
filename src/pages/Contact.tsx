@@ -61,27 +61,82 @@ const ContactPage = () => {
   const [submitted, setSubmitted] = useState(false);
   const [sending, setSending] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
-    const result = contactSchema.safeParse(form);
-    if (!result.success) {
-      const fieldErr: Record<string, string> = {};
-      result.error.issues.forEach((i) => {
-        fieldErr[i.path[0] as string] = i.message;
-      });
-      setErrors(fieldErr);
-      toast({ title: "Please check the form", description: "A few fields need your attention." });
-      return;
+  const handleSubmit = async (e: React.FormEvent) => {
+  e.preventDefault();
+
+  const result = contactSchema.safeParse(form);
+
+  if (!result.success) {
+    const fieldErr: Record<string, string> = {};
+
+    result.error.issues.forEach((i) => {
+      fieldErr[i.path[0] as string] = i.message;
+    });
+
+    setErrors(fieldErr);
+
+    toast({
+      title: "Please check the form",
+      description: "A few fields need your attention.",
+    });
+
+    return;
+  }
+
+  setErrors({});
+  setSending(true);
+
+  try {
+    const response = await fetch(
+      "https://api.weborixtechnologies.in/api/mail/send",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          name: form.name,
+          email: form.email,
+          phone: form.phone,
+          service: form.service.join(", "),
+          budget: form.budget,
+          details: form.message,
+        }),
+      }
+    );
+
+    const data = await response.json();
+
+    if (!response.ok) {
+      throw new Error(data.message || "Failed to send message");
     }
-    setErrors({});
-    setSending(true);
-    setTimeout(() => {
-      setSending(false);
-      setSubmitted(true);
-      toast({ title: "Message sent! 🎉", description: "We'll get back to you within 24 hours." });
-      setForm({ name: "", email: "", phone: "", service: [], budget: "", message: "" });
-    }, 1200);
-  };
+
+    setSubmitted(true);
+
+    toast({
+      title: "Message sent! 🎉",
+      description: "We'll get back to you within 24 hours.",
+    });
+
+    setForm({
+      name: "",
+      email: "",
+      phone: "",
+      service: [],
+      budget: "",
+      message: "",
+    });
+  } catch (error: any) {
+    toast({
+      title: "Something went wrong",
+      description:
+        error.message || "Failed to send message. Please try again.",
+      variant: "destructive",
+    });
+  } finally {
+    setSending(false);
+  }
+};
 
   return (
     <div className="min-h-screen bg-background overflow-hidden">
