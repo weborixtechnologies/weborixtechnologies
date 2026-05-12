@@ -275,7 +275,7 @@ const About = () => {
       */}
 
       {/* CTA */}
-      <section className="relative py-20 sm:py-24 lg:py-28 bg-dexon-yellow text-foreground text-center overflow-hidden">
+      {/*<section className="relative py-20 sm:py-24 lg:py-28 bg-dexon-yellow text-foreground text-center overflow-hidden">
         <div className="absolute inset-0 pointer-events-none flex items-center justify-center opacity-30">
           <div className="w-[40rem] h-[40rem] bg-background rounded-full blur-3xl" />
         </div>
@@ -306,6 +306,8 @@ const About = () => {
           </div>
         </div>
       </section>
+      <CtaSection />
+*/}
 
       <Footer />
     </div>
