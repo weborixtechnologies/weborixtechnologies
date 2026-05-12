@@ -20,11 +20,14 @@ const values = [
   { Icon: ShieldCheck, title: "Built to last", desc: "Performance, accessibility and maintainability are non-negotiable." },
 ];
 
-const team = [
+{
+  /* const team = [
   { name: "Sujan Das", role: "Design & Developer", initials: "SD", tint: "bg-dexon-yellow/40" },
   { name: "Jaydeb Pal", role: "Growth & Performance ", initials: "JP", tint: "bg-dexon-cyan/40" },
   { name: "Utsab Ghosh", role: "Strategy & Engineering Lead", initials: "UB", tint: "bg-dexon-green/40" },
 ];
+
+*/}
 
 const milestones = [
   { year: "2021", title: "Weborix is born", desc: "Started as a two-person studio building lean websites for founders." },
@@ -235,6 +238,7 @@ const About = () => {
       </section>
 
       {/* TEAM */}
+     {/* 
       <section className="py-16 sm:py-20 lg:py-24">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
           <div className="max-w-2xl mb-12 sm:mb-14">
@@ -267,6 +271,8 @@ const About = () => {
           </div>
         </div>
       </section>
+
+      */}
 
       {/* CTA */}
       <section className="relative py-20 sm:py-24 lg:py-28 bg-dexon-yellow text-foreground text-center overflow-hidden">
@@ -307,3 +313,4 @@ const About = () => {
 };
 
 export default About;
+ //comment added for testing
