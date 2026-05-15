@@ -426,10 +426,6 @@ const ServicesSection = () => {
         
         {/* Section Header */}
         <div className="text-center mb-16 flex flex-col items-center">
-          <div className="inline-flex items-center gap-2 bg-indigo-50 px-3 py-1 rounded-full mb-6 shadow-sm border border-indigo-100/50">
-            <div className="w-1.5 h-1.5 rounded-full bg-indigo-600 animate-pulse"></div>
-            <span className="text-[10px] font-bold text-indigo-900 tracking-widest uppercase">Our Services</span>
-          </div>
           
           <h2 className="text-4xl md:text-5xl font-extrabold text-[#111827] mb-4 leading-tight tracking-tight">
             Growing your Revenue<br />using{" "}
