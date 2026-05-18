@@ -1,4 +1,5 @@
 import { Facebook, Twitter, Instagram, Linkedin, ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -9,15 +10,16 @@ const Footer = () => {
           <div className="sm:col-span-2 lg:col-span-1">
 
 
-            <img   //Logo
+            {/* Logo */}
+            <img
               src="/IMG/Logo.png"
               alt="Weborix Technologies"
               className="h-14 w-auto mb-4"
             />
-            <p className="text-sm text-primary-foreground/70 leading-relaxed mb-6 max-w-xs">
-              Ullamcorper risus ultrices risus lorem.
-              Vulputate ut aliquam, consectetur turpis
-              Vulputate ut aliquam.
+            <p className="text-m text-primary-foreground/70 leading-relaxed mb-7 max-w-xs">
+          We build websites, brands, and digital experiences that help businesses  that want to stand out.
+
+
             </p>
             <div className="flex items-center gap-3">
               {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
@@ -34,25 +36,66 @@ const Footer = () => {
           </div>
 
           {/* Informations */}
-          <div>
-            <h4 className="font-bold text-base sm:text-lg mb-4">Informations</h4>
-            <ul className="space-y-2.5 text-sm text-primary-foreground/70">
-              {["About Company", "Portfolio", "Team", "Latest Blog"].map((item) => (
-                <li key={item}>
-                  <a href="#" className="hover:text-dexon-yellow transition-colors">{item}</a>
-                </li>
-              ))}
-            </ul>
-          </div>
+<div>
+  <h4 className="font-bold text-base sm:text-lg mb-4">
+    Informations
+  </h4>
 
+  <ul className="space-y-2.5 text-sm text-primary-foreground/70">
+    <li>
+      <Link
+        to="/about"
+        className="hover:text-dexon-yellow transition-colors"
+      >
+        About
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/portfolio"
+        className="hover:text-dexon-yellow transition-colors"
+      >
+        Portfolio
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/services/digital-marketing"
+        className="hover:text-dexon-yellow transition-colors"
+      >
+        Digital Marketing
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/services/web-development"
+        className="hover:text-dexon-yellow transition-colors"
+      >
+        Web Development
+      </Link>
+    </li>
+
+    <li>
+      <Link
+        to="/services/graphics-design"
+        className="hover:text-dexon-yellow transition-colors"
+      >
+        Graphics Design
+      </Link>
+    </li>
+  </ul>
+</div>
           {/* Contact Us */}
           <div>
             <h4 className="font-bold text-base sm:text-lg mb-4">Contact Us</h4>
             <ul className="space-y-2.5 text-sm text-primary-foreground/70">
               <li>Kolkata, WB, India, 700001</li>
               <li>
-                <a href="mailto:example@gmail.com" className="hover:text-dexon-yellow transition-colors">
-                  example@gmail.com
+                <a href="mailto:info@weborixtechnologies.in" className="hover:text-dexon-yellow transition-colors">
+                  info@weborixtechnologies.in
                 </a>
               </li>
                 <li className="flex flex-col">
@@ -100,11 +143,22 @@ const Footer = () => {
           <p className="text-xs sm:text-sm text-primary-foreground/50">
            © 2026 Weborix Technologies. All rights reserved.
           </p>
-          <div className="flex items-center gap-5 sm:gap-6 text-xs sm:text-sm text-primary-foreground/50">
-            <a href="#" className="hover:text-primary-foreground transition-colors">About</a>
-            <a href="#" className="hover:text-primary-foreground transition-colors">Services</a>
-            <a href="#" className="hover:text-primary-foreground transition-colors">Career</a>
-          </div>
+<div className="flex flex-wrap items-center gap-5 sm:gap-6 text-xs sm:text-sm text-primary-foreground/50">
+
+  <Link
+    to="/privacy-policy"
+    className="hover:text-primary-foreground transition-colors"
+  >
+    Privacy Policy
+  </Link>
+
+  <Link
+    to="/terms-of-use"
+    className="hover:text-primary-foreground transition-colors"
+  >
+    Terms & Conditions
+  </Link>
+</div>
         </div>
       </div>
     </footer>
