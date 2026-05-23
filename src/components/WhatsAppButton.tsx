@@ -1,5 +1,5 @@
 const WhatsAppButton = () => {
-  const phoneNumber = "918900074438";
+  const phoneNumber = "918282867326";
 
   const message =
     "Hello Weborix Technologies, I want to know more about your services.";

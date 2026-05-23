@@ -2,31 +2,32 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import DemoImage from "@/assets/DemoImage.avif";
+
 const items = [
   {
     title: "PROJECT 1",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    cover: DemoImage, 
+    cover: DemoImage,
   },
   {
     title: "PROJECT 1",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    cover: DemoImage, 
+    cover: DemoImage,
   },
   {
     title: "PROJECT 2",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    cover: DemoImage, 
+    cover: DemoImage,
   },
   {
     title: "PROJECT 3",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    cover: DemoImage, 
+    cover: DemoImage,
   },
   {
     title: "PROJECT 4",
     desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    cover: DemoImage, 
+    cover: DemoImage,
   },
 ];
 
@@ -37,37 +38,37 @@ const PortfolioPreview = () => {
     <section className="py-16 sm:py-20 lg:py-24 bg-background overflow-hidden">
       <div className="w-full px-3 sm:px-4 lg:px-5">
 
-        {/* Header update  */}
+        {/* Header */}
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6 mb-10 sm:mb-14 w-full px-4 sm:px-6">
-  
-  {/* LEFT */}
-  <div className="max-w-2xl">
-    <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground mb-3">
-      Selected work
-    </p>
 
-    <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground leading-[1.05] tracking-tight">
-      Recent projects,{" "}
-      <span className="relative inline-block">
-        <span className="relative z-10">real outcomes.</span>
+          {/* LEFT */}
+          <div className="max-w-2xl">
+            <p className="text-[11px] sm:text-xs font-semibold uppercase tracking-[0.25em] text-muted-foreground mb-3">
+              Selected work
+            </p>
 
-        <span className="absolute bottom-1 left-0 right-0 h-2 sm:h-3 bg-dexon-yellow rounded-full -z-0" />
-      </span>
-    </h2>
-  </div>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-foreground leading-[1.05] tracking-tight">
+              Recent projects,{" "}
+              <span className="relative inline-block">
+                <span className="relative z-10">real outcomes.</span>
 
-  {/* RIGHT */}
-  <div className="flex justify-end sm:ml-auto">
-    <Link
-      to="/portfolio"
-      className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-semibold transition-all duration-300 hover:scale-105"
-    >
-      View all work
+                <span className="absolute bottom-1 left-0 right-0 h-2 sm:h-3 bg-dexon-yellow rounded-full -z-0" />
+              </span>
+            </h2>
+          </div>
 
-      <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
-    </Link>
-  </div>
-</div>
+          {/* RIGHT */}
+          <div className="flex justify-end sm:ml-auto">
+            <Link
+              to="/portfolio"
+              className="group inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-foreground text-background text-sm font-semibold transition-all duration-300 hover:scale-105"
+            >
+              View all work
+
+              <ArrowUpRight className="w-4 h-4 transition-transform duration-300 group-hover:rotate-45" />
+            </Link>
+          </div>
+        </div>
 
         {/* Cards */}
         <div className="flex flex-col lg:flex-row gap-4">
@@ -90,8 +91,8 @@ const PortfolioPreview = () => {
 
                   ${
                     isActive
-                      ? "h-[250px] sm:h-[300px] lg:h-[560px] lg:flex-[3]"
-                      : "h-[85px] sm:h-[100px] lg:h-[560px] lg:flex-1"
+                      ? "h-[320px] sm:h-[420px] md:h-[480px] lg:h-[560px] lg:flex-[3]"
+                      : "h-[110px] sm:h-[140px] md:h-[160px] lg:h-[560px] lg:flex-1"
                   }
                 `}
               >
@@ -192,27 +193,6 @@ const PortfolioPreview = () => {
                       }
                     `}
                   >
-                    {/* Badge */}
-                    {/*
-  <span
-    className="
-      inline-flex px-3 py-1
-      rounded-full
-
-      bg-white/10
-      backdrop-blur-xl
-
-      border border-white/10
-
-      text-white text-[10px]
-      uppercase tracking-[0.22em]
-      font-semibold mb-5
-    "
-  >
-    Featured
-  </span>
-*/}
-
                     {/* Title */}
                     <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-none max-w-xl">
                       {item.title}
@@ -226,7 +206,8 @@ const PortfolioPreview = () => {
                 </div>
 
                 {/* Floating Button */}
-         {/*         <Link
+                {/*
+                <Link
                   to="/portfolio"
                   onClick={(e) => e.stopPropagation()}
                   className={`
@@ -269,11 +250,8 @@ const PortfolioPreview = () => {
                       hover:rotate-0
                     "
                   />
-                </Link>  
-
-                 */}
-
-                 
+                </Link>
+                */}
               </div>
             );
           })}
