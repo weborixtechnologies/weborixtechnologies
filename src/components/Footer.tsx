@@ -1,4 +1,10 @@
-import { Facebook, Twitter, Instagram, Linkedin, ArrowRight } from "lucide-react";
+import {
+  Facebook,
+  Instagram,
+  Linkedin,
+  ArrowRight,
+  Twitter
+} from "lucide-react";
 import { Link } from "react-router-dom";
 
 const Footer = () => {
@@ -6,9 +12,9 @@ const Footer = () => {
     <footer className="bg-primary text-primary-foreground py-12 sm:py-16 lg:py-20 rounded-t-2xl mx-3 sm:mx-4 mt-3 sm:mt-4 overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 lg:gap-10">
+
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-
 
             {/* Logo */}
             <img
@@ -16,118 +22,174 @@ const Footer = () => {
               alt="Weborix Technologies"
               className="h-14 w-auto mb-4"
             />
+
             <p className="text-m text-primary-foreground/70 leading-relaxed mb-7 max-w-xs">
-          We build websites, brands, and digital experiences that help businesses  that want to stand out.
-
-
+              We build websites, brands, and digital experiences that help
+              businesses that want to stand out.
             </p>
+
+            {/* Social Icons */}
             <div className="flex items-center gap-3">
-              {[Facebook, Twitter, Instagram, Linkedin].map((Icon, i) => (
-                <a
-                  key={i}
-                  href="#"
-                  className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-dexon-yellow hover:text-foreground transition-all"
-                  aria-label="Social link"
-                >
-                  <Icon className="w-4 h-4" />
-                </a>
-              ))}
+
+              {/* Facebook */}
+              <a
+                href="https://www.facebook.com/profile.php?id=61589983106973"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-dexon-yellow hover:text-foreground transition-all"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+
+               {/* Twitter / X */}
+              <a
+                href="https://x.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-dexon-yellow hover:text-foreground transition-all"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
+
+              {/* Instagram */}
+              <a
+                href="https://www.instagram.com/weborixtechnologies"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-dexon-yellow hover:text-foreground transition-all"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
+
+              {/* LinkedIn */}
+              <a
+                href="https://www.linkedin.com/in/weborix-technologies/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-9 h-9 rounded-full bg-primary-foreground/10 flex items-center justify-center hover:bg-dexon-yellow hover:text-foreground transition-all"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
           {/* Informations */}
-<div>
-  <h4 className="font-bold text-base sm:text-lg mb-4">
-    Informations
-  </h4>
+          <div>
+            <h4 className="font-bold text-base sm:text-lg mb-4">
+              Informations
+            </h4>
 
-  <ul className="space-y-2.5 text-sm text-primary-foreground/70">
-    <li>
-      <Link
-        to="/about"
-        className="hover:text-dexon-yellow transition-colors"
-      >
-        About
-      </Link>
-    </li>
+            <ul className="space-y-2.5 text-sm text-primary-foreground/70">
 
-    <li>
-      <Link
-        to="/portfolio"
-        className="hover:text-dexon-yellow transition-colors"
-      >
-        Portfolio
-      </Link>
-    </li>
+              <li>
+                <Link
+                  to="/about"
+                  className="hover:text-dexon-yellow transition-colors"
+                >
+                  About
+                </Link>
+              </li>
 
-    <li>
-      <Link
-        to="/services/digital-marketing"
-        className="hover:text-dexon-yellow transition-colors"
-      >
-        Digital Marketing
-      </Link>
-    </li>
+              <li>
+                <Link
+                  to="/portfolio"
+                  className="hover:text-dexon-yellow transition-colors"
+                >
+                  Portfolio
+                </Link>
+              </li>
 
-    <li>
-      <Link
-        to="/services/web-development"
-        className="hover:text-dexon-yellow transition-colors"
-      >
-        Web Development
-      </Link>
-    </li>
+              <li>
+                <Link
+                  to="/services/digital-marketing"
+                  className="hover:text-dexon-yellow transition-colors"
+                >
+                  Digital Marketing
+                </Link>
+              </li>
 
-    <li>
-      <Link
-        to="/services/graphics-design"
-        className="hover:text-dexon-yellow transition-colors"
-      >
-        Graphics Design
-      </Link>
-    </li>
-  </ul>
-</div>
+              <li>
+                <Link
+                  to="/services/web-development"
+                  className="hover:text-dexon-yellow transition-colors"
+                >
+                  Web Development
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  to="/services/graphics-design"
+                  className="hover:text-dexon-yellow transition-colors"
+                >
+                  Graphics Design
+                </Link>
+              </li>
+            </ul>
+          </div>
+
           {/* Contact Us */}
           <div>
-            <h4 className="font-bold text-base sm:text-lg mb-4">Contact Us</h4>
+            <h4 className="font-bold text-base sm:text-lg mb-4">
+              Contact Us
+            </h4>
+
             <ul className="space-y-2.5 text-sm text-primary-foreground/70">
               <li>Kolkata, WB, India, 700001</li>
+
               <li>
-                <a href="mailto:info@weborixtechnologies.in" className="hover:text-dexon-yellow transition-colors">
+                <a
+                  href="mailto:info@weborixtechnologies.in"
+                  className="hover:text-dexon-yellow transition-colors"
+                >
                   info@weborixtechnologies.in
                 </a>
               </li>
-                <li className="flex flex-col">
-                  <a
-                    href="tel:+918509851562"
-                    className="hover:text-dexon-yellow transition-colors"
-                  >
-                    +91 85098 51562
-                  </a>
-                  <a
-                    href="tel:+918967821570"
-                    className="hover:text-dexon-yellow transition-colors"
-                  >
-                    +91 89678 21570
-                  </a>
-                </li>
+
+              <li className="flex flex-col">
+
+                <a
+                  href="tel:+918282867326"
+                  className="hover:text-dexon-yellow transition-colors"
+                >
+                  +91 8282867326
+                </a>
+
+                <a
+                  href="tel:+918967821570"
+                  className="hover:text-dexon-yellow transition-colors"
+                >
+                  +91 89678 21570
+                </a>
+              </li>
             </ul>
           </div>
 
           {/* Newsletter */}
           <div>
-            <h4 className="font-bold text-base sm:text-lg mb-4">Newsletter</h4>
+            <h4 className="font-bold text-base sm:text-lg mb-4">
+              Newsletter
+            </h4>
+
             <p className="text-sm text-primary-foreground/70 mb-4">
               Subscribe to get the latest updates and offers from us.
             </p>
-            <form className="flex" onSubmit={(e) => e.preventDefault()}>
+
+            <form
+              className="flex"
+              onSubmit={(e) => e.preventDefault()}
+            >
               <input
                 type="email"
                 placeholder="Your email"
                 className="bg-primary-foreground/10 text-sm text-primary-foreground placeholder:text-primary-foreground/40 px-4 py-3 rounded-l-full flex-1 min-w-0 outline-none border-none focus:bg-primary-foreground/15"
                 aria-label="Email address"
               />
+
               <button
                 type="submit"
                 className="bg-dexon-yellow text-foreground px-5 sm:px-6 py-3 rounded-r-full text-sm font-semibold hover:opacity-90 transition-opacity flex items-center justify-center"
@@ -139,26 +201,29 @@ const Footer = () => {
           </div>
         </div>
 
+        {/* Bottom */}
         <div className="border-t border-primary-foreground/10 mt-10 sm:mt-12 pt-6 sm:pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+
           <p className="text-xs sm:text-sm text-primary-foreground/50">
-           © 2026 Weborix Technologies. All rights reserved.
+            © 2026 Weborix Technologies. All rights reserved.
           </p>
-<div className="flex flex-wrap items-center gap-5 sm:gap-6 text-xs sm:text-sm text-primary-foreground/50">
 
-  <Link
-    to="/privacy-policy"
-    className="hover:text-primary-foreground transition-colors"
-  >
-    Privacy Policy
-  </Link>
+          <div className="flex flex-wrap items-center gap-5 sm:gap-6 text-xs sm:text-sm text-primary-foreground/50">
 
-  <Link
-    to="/terms-of-use"
-    className="hover:text-primary-foreground transition-colors"
-  >
-    Terms & Conditions
-  </Link>
-</div>
+            <Link
+              to="/privacy-policy"
+              className="hover:text-primary-foreground transition-colors"
+            >
+              Privacy Policy
+            </Link>
+
+            <Link
+              to="/terms-of-use"
+              className="hover:text-primary-foreground transition-colors"
+            >
+              Terms & Conditions
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
