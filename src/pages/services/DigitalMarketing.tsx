@@ -1,137 +1,126 @@
-import { useEffect, useRef, useState } from "react";
+import { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import {
-  ArrowUpRight, Home, TrendingUp, Search, Target, Mail, Share2, BarChart3,
-  Megaphone, Sparkles, Rocket, MousePointer2, Eye, ThumbsUp, Play
+  ArrowUpRight, Home, Search, Target, Share2, Mail, PenSquare, BarChart3,
+  TrendingUp, Rocket, Sparkles, Zap, Plus, Minus, MousePointer2, Eye, ThumbsUp,
+  Building2, ShoppingBag, GraduationCap, HeartPulse, Utensils, Briefcase, Palette, Plane,
+  ClipboardCheck, LineChart, Megaphone, Award
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CtaSection from "@/components/CtaSection";
-import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from "@/components/ui/accordion";
+import heroImg from "@/assets/marketing-hero.png";
+import seoImg from "@/assets/marketing-seo.png";
+import adsImg from "@/assets/marketing-ads.png";
+import socialImg from "@/assets/marketing-social.png";
+import emailImg from "@/assets/marketing-email.png";
+import contentImg from "@/assets/marketing-content.png";
 
-/* ---------- helpers ---------- */
-const useCount = (target: number, suffix = "", duration = 1600) => {
-  const [v, setV] = useState(0);
-  const ref = useRef<HTMLSpanElement | null>(null);
-  useEffect(() => {
-    const el = ref.current; if (!el) return;
-    const io = new IntersectionObserver(([e]) => {
-      if (!e.isIntersecting) return;
-      const start = performance.now();
-      const tick = (t: number) => {
-        const p = Math.min(1, (t - start) / duration);
-        setV(Math.floor(target * (1 - Math.pow(1 - p, 3))));
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-      io.disconnect();
-    }, { threshold: 0.4 });
-    io.observe(el); return () => io.disconnect();
-  }, [target, duration]);
-  return { ref, value: `${v.toLocaleString()}${suffix}` };
-};
-
-const Counter = ({ to, suffix = "" }: { to: number; suffix?: string }) => {
-  const { ref, value } = useCount(to, suffix);
-  return <span ref={ref}>{value}</span>;
-};
-
-/* ---------- HERO ---------- */
+/* =========================================================
+   HERO
+========================================================= */
 const Hero = () => (
-  <section className="relative pt-28 sm:pt-32 lg:pt-40 pb-20 lg:pb-28 overflow-hidden bg-gradient-to-b from-dexon-cream via-background to-background">
-    <div className="absolute -top-32 -right-24 w-[28rem] h-[28rem] bg-dexon-green/40 animate-blob" />
-    <div className="absolute top-40 -left-20 w-72 h-72 bg-dexon-yellow/40 animate-blob" style={{ animationDelay: "2s" }} />
-    {/* dotted grid */}
-    <div className="absolute inset-0 opacity-[0.07] pointer-events-none"
-      style={{ backgroundImage: "radial-gradient(currentColor 1px, transparent 1px)", backgroundSize: "22px 22px" }} />
-
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative">
-      <nav className="flex items-center gap-2 text-sm text-foreground/60 mb-8">
-        <Link to="/" className="inline-flex items-center gap-1 hover:text-foreground"><Home className="w-3.5 h-3.5" />Home</Link>
+  <section className="bg-[#f5f3ee] pt-20 sm:pt-24 lg:pt-28 pb-6 lg:pb-8 px-4 overflow-hidden">
+    <div className="max-w-7xl mx-auto">
+      <nav className="flex items-center gap-2 text-sm text-black/50 mb-5">
+        <Link to="/" className="inline-flex items-center gap-1 hover:text-black"><Home className="w-3.5 h-3.5" />Home</Link>
         <span>/</span><span>Services</span><span>/</span>
-        <span className="text-foreground font-semibold">Digital Marketing</span>
+        <span className="text-black font-semibold">Digital Marketing</span>
       </nav>
 
-      <div className="grid lg:grid-cols-12 gap-10 items-center">
-        <div className="lg:col-span-7 animate-fade-up">
-          <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-card border border-border shadow-sm mb-6">
-            <span className="relative flex h-2 w-2"><span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-dexon-green opacity-75" /><span className="relative inline-flex rounded-full h-2 w-2 bg-dexon-green" /></span>
-            <span className="text-xs font-bold uppercase tracking-wider">Marketing that scales</span>
+      <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 items-stretch">
+        {/* LEFT BIG CARD */}
+        <div className="lg:col-span-2 relative rounded-[36px] bg-[#ece9e4] p-6 sm:p-8 lg:p-9 min-h-[440px] flex flex-col border border-black/5 overflow-hidden">
+          <div className="absolute top-[-120px] right-[-120px] w-[360px] h-[360px] bg-[#9be3a0]/40 rounded-full blur-3xl" />
+
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-black/10 bg-white/70 backdrop-blur-sm w-fit relative z-10">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-[#3aa14b] opacity-75" />
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-[#3aa14b]" />
+            </span>
+            <span className="text-[11px] font-semibold tracking-wide text-black/70">Performance Marketing </span>
           </div>
 
-          <h1 className="text-5xl sm:text-6xl lg:text-7xl xl:text-8xl font-black tracking-tight leading-[0.95] text-foreground">
-            Turn clicks <br />
-            <span className="inline-flex items-center gap-3 flex-wrap">
-              into
-              <span className="inline-flex items-center gap-2 bg-dexon-yellow rounded-full px-4 py-1">
-                <TrendingUp className="w-8 h-8 sm:w-10 sm:h-10" strokeWidth={2.5} />
-              </span>
-              <span className="relative">
-                <span className="relative z-10">customers.</span>
-                <svg className="absolute -bottom-2 left-0 w-full" height="12" viewBox="0 0 200 12" fill="none">
-                  <path d="M2 8 Q50 1 100 6 T198 4" stroke="hsl(var(--dexon-green))" strokeWidth="6" strokeLinecap="round" />
-                </svg>
-              </span>
-            </span>
-          </h1>
+          <div className="mt-6 max-w-[700px] relative z-10">
+            <h1 className="text-[2.25rem] sm:text-[3.2rem] lg:text-[3.8rem] leading-[0.95] tracking-[-0.05em] font-black text-[#111]">
+              We turn ad spend into
+              <br />
+              <span className="text-[#1f7a30] underline decoration-[#9be3a0] underline-offset-4">predictable revenue.</span>
+            </h1>
+            <p className="mt-4 text-[15px] sm:text-base leading-relaxed text-black/55 max-w-xl">
+              SEO, paid ads, social, email and analytics — engineered together so every
+              dollar you spend works harder than the last.
+            </p>
+          </div>
 
-          <p className="mt-7 text-base sm:text-lg text-muted-foreground max-w-xl leading-relaxed">
-            Strategy, paid ads, SEO, content & analytics — engineered together so every dollar you spend works harder than the last.
-          </p>
+          <div className="mt-6 flex flex-nowrap sm:flex-wrap gap-3 relative z-10">
+            <Link
+              to="/contact"
+              className="flex-1 sm:flex-none h-12 px-4 sm:px-6 inline-flex items-center justify-center rounded-2xl bg-black text-white text-sm font-semibold hover:scale-[1.03] hover:shadow-2xl transition-all duration-300 whitespace-nowrap"
+            >
+              Get a free audit
+            </Link>
 
-          <div className="mt-9 flex flex-wrap items-center gap-4">
-            <a href="#offer" className="group inline-flex items-center gap-2 bg-primary text-primary-foreground pl-7 pr-3 py-2.5 rounded-full text-sm sm:text-base font-semibold hover:scale-105 transition-transform">
-              Grow my brand
-              <span className="w-9 h-9 rounded-full bg-dexon-yellow text-foreground flex items-center justify-center group-hover:rotate-45 transition-transform"><ArrowUpRight className="w-4 h-4" /></span>
+            <a
+              href="#offer"
+              className="flex-1 sm:flex-none h-12 px-4 sm:px-6 inline-flex items-center justify-center rounded-2xl border border-black/10 bg-white text-sm font-semibold hover:bg-black hover:text-white transition-all duration-300 whitespace-nowrap"
+            >
+              See what we do
             </a>
-            <div className="flex items-center gap-2 text-sm font-semibold">
-              <span className="w-10 h-10 rounded-full bg-card border border-border flex items-center justify-center"><Play className="w-3.5 h-3.5 fill-foreground" /></span>
-              90-sec intro
+          </div>
+
+          <div className="mt-auto pt-6 grid grid-cols-3 gap-3 sm:gap-4 relative z-10">
+            <div className="rounded-2xl sm:rounded-3xl bg-white/70 backdrop-blur-sm border border-white/60 p-4">
+              <h4 className="text-xl sm:text-2xl font-black text-[#111]">12x</h4>
+              <p className="mt-1 text-xs text-black/50 font-medium">Avg ROAS</p>
+            </div>
+            <div className="rounded-2xl sm:rounded-3xl bg-[#dfe9e2]/80 backdrop-blur-sm border border-white/60 p-4">
+              <h4 className="text-xl sm:text-2xl font-black text-[#111]">250+</h4>
+              <p className="mt-1 text-xs text-black/50 font-medium">Campaigns</p>
+            </div>
+            <div className="rounded-2xl sm:rounded-3xl bg-[#f5e7a8]/70 backdrop-blur-sm border border-[#e3c85d]/20 p-4">
+              <h4 className="text-xl sm:text-2xl font-black text-[#111]">40M+</h4>
+              <p className="mt-1 text-xs text-black/50 font-medium">Impressions</p>
             </div>
           </div>
         </div>
 
-        {/* floating cards collage */}
-        <div className="lg:col-span-5 relative h-[460px] sm:h-[520px] hidden md:block">
-          {/* big stat card */}
-          <div className="absolute top-0 right-0 w-64 bg-card rounded-3xl p-5 shadow-xl ring-1 ring-border animate-float-slow">
-            <div className="flex items-center justify-between text-xs text-muted-foreground"><span>ROAS</span><span className="text-dexon-green font-bold">+128%</span></div>
-            <div className="text-4xl font-black mt-1"><Counter to={12} suffix="x" /></div>
-            <svg viewBox="0 0 200 60" className="mt-2 w-full">
-              <defs><linearGradient id="g1" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stopColor="hsl(var(--dexon-green))" stopOpacity="0.5"/><stop offset="1" stopColor="hsl(var(--dexon-green))" stopOpacity="0"/></linearGradient></defs>
-              <path d="M0 50 L25 40 L50 45 L75 30 L100 35 L125 20 L150 25 L175 10 L200 15 L200 60 L0 60 Z" fill="url(#g1)"/>
-              <path d="M0 50 L25 40 L50 45 L75 30 L100 35 L125 20 L150 25 L175 10 L200 15" fill="none" stroke="hsl(var(--foreground))" strokeWidth="2.5" strokeLinecap="round"/>
-            </svg>
-          </div>
-
-          {/* impressions */}
-          <div className="absolute top-44 left-0 w-56 bg-dexon-yellow rounded-3xl p-5 shadow-xl animate-float">
-            <Eye className="w-6 h-6" />
-            <div className="text-3xl font-black mt-2"><Counter to={40} suffix="M+" /></div>
-            <p className="text-xs font-bold uppercase tracking-wider mt-1">Impressions</p>
-          </div>
-
-          {/* circle progress */}
-          <div className="absolute bottom-0 right-6 w-44 bg-card rounded-3xl p-5 shadow-xl ring-1 ring-border animate-float-slow" style={{ animationDelay: "1.4s" }}>
-            <div className="relative w-24 h-24 mx-auto">
-              <svg viewBox="0 0 36 36" className="w-full h-full -rotate-90">
-                <circle cx="18" cy="18" r="15.9" fill="none" stroke="hsl(var(--muted))" strokeWidth="3"/>
-                <circle cx="18" cy="18" r="15.9" fill="none" stroke="hsl(var(--dexon-green))" strokeWidth="3" strokeLinecap="round" strokeDasharray="98 100"/>
-              </svg>
-              <div className="absolute inset-0 flex items-center justify-center text-xl font-black">98%</div>
+        {/* RIGHT */}
+        <div className="flex flex-col gap-5 min-h-[440px]">
+          <div className="relative flex-1 rounded-[36px] bg-[#dfe9e2] p-6 border border-black/5 overflow-hidden flex flex-col justify-between min-h-[320px] group">
+            <div className="absolute -top-16 -right-16 w-48 h-48 bg-[#9be3a0]/40 blur-3xl rounded-full group-hover:scale-125 transition-transform duration-700" />
+            <div className="relative z-10">
+              <p className="text-sm uppercase tracking-[0.2em] text-black/40 font-semibold">Live dashboard</p>
+              <h3 className="mt-2 text-[1.8rem] leading-[0.95] font-black tracking-tight text-[#111]">
+                Every metric,
+                <br />always on.
+              </h3>
             </div>
-            <p className="text-center text-xs font-bold uppercase mt-2">Retention</p>
+            <motion.img
+              src={heroImg}
+              alt="Marketing analytics dashboard render"
+              width={1024}
+              height={1024}
+              className="relative z-10 w-full max-w-[280px] mx-auto drop-shadow-2xl"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+            />
           </div>
 
-          {/* like badge */}
-          <div className="absolute bottom-32 left-8 bg-dexon-green rounded-2xl px-4 py-3 shadow-xl animate-float flex items-center gap-2" style={{ animationDelay: "0.6s" }}>
-            <ThumbsUp className="w-5 h-5" />
-            <span className="font-bold text-sm">+2.4k likes</span>
-          </div>
-
-          {/* cursor */}
-          <div className="absolute top-32 right-44 animate-float-slow" style={{ animationDelay: "0.3s" }}>
-            <MousePointer2 className="w-7 h-7 fill-foreground" />
+          <div className="rounded-[36px] bg-[#f5e7a8] min-h-[180px] p-6 border border-black/5 flex flex-col justify-between">
+            <h3 className="text-[1.5rem] leading-[1.05] font-black tracking-tight text-[#111]">
+              No long
+              <br />contracts. Ever.
+            </h3>
+            <div className="flex items-center justify-between gap-4 flex-wrap mt-4">
+              <div className="inline-flex items-center gap-2 text-sm font-semibold text-black/70">
+                <Rocket className="w-4 h-4" /> Month-to-month
+              </div>
+              <Link to="/contact" className="px-5 py-3 rounded-full bg-black text-white text-sm font-medium whitespace-nowrap inline-flex items-center gap-2">
+                Book a call <ArrowUpRight className="w-4 h-4" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
@@ -139,42 +128,251 @@ const Hero = () => (
   </section>
 );
 
-/* ---------- WHAT WE OFFER (bento) ---------- */
-const offerings = [
-  { icon: Search, title: "SEO Optimization", desc: "Rank higher with technical SEO, keyword strategy, and authoritative link building.", bg: "bg-dexon-cream", span: "lg:col-span-2", accent: "bg-dexon-green/60" },
-  { icon: Target, title: "Paid Ads", desc: "Google, Meta, TikTok, LinkedIn — high-ROAS campaigns by audience and budget.", bg: "bg-dexon-yellow", span: "", accent: "bg-card" },
-  { icon: Share2, title: "Social Media", desc: "Calendars, community & creative that turn followers into loyal buyers.", bg: "bg-card ring-1 ring-border", span: "", accent: "bg-dexon-cyan/60" },
-  { icon: Mail, title: "Email Lifecycle", desc: "Automations, newsletters & segmented flows that print repeat revenue.", bg: "bg-dexon-green/70", span: "lg:col-span-2", accent: "bg-card" },
-  { icon: Megaphone, title: "Content & Copy", desc: "Blogs, landing pages, ad copy & brand voice that ranks and converts.", bg: "bg-dexon-cyan/40", span: "", accent: "bg-dexon-yellow" },
-  { icon: BarChart3, title: "Analytics & CRO", desc: "GA4, dashboards, A/B testing — every visitor worth more than the last.", bg: "bg-card ring-1 ring-border", span: "lg:col-span-2", accent: "bg-dexon-green" },
-];
-
+/* =========================================================
+   OFFER (bento with PNGs)
+========================================================= */
 const Offer = () => (
-  <section id="offer" className="py-20 lg:py-28 bg-background relative">
+  <section id="offer" className="py-16 sm:py-20 lg:py-24 bg-card">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-      <div className="flex flex-wrap items-end justify-between gap-6 mb-12">
-        <div>
-          <p className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground mb-3">What we offer</p>
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">
-            A full-stack <br /><span className="bg-dexon-green/70 px-3 rounded-2xl">growth engine.</span>
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12 sm:mb-14">
+        <div className="max-w-2xl">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground mb-3">What we do</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.1]">
+            A full-stack{" "}
+            <span className="relative inline-block">
+              <span className="relative z-10">growth team.</span>
+              <span className="absolute left-0 right-0 bottom-1 sm:bottom-2 h-2 sm:h-3 bg-dexon-green/70 -z-0" />
+            </span>
           </h2>
         </div>
-        <p className="max-w-sm text-muted-foreground">Six channels working as one system — not six agencies pulling in six directions.</p>
+        <p className="max-w-sm text-sm sm:text-base text-muted-foreground">
+          Six channels — strategy, SEO, ads, social, email, content — working as one engine, not six agencies.
+        </p>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 auto-rows-[minmax(220px,auto)] gap-5">
-        {offerings.map((o, i) => {
-          const Icon = o.icon;
-          return (
-            <div key={i} className={`${o.bg} ${o.span} group relative rounded-3xl p-7 overflow-hidden hover:-translate-y-2 transition-all duration-500`}>
-              <div className={`absolute -bottom-12 -right-12 w-40 h-40 ${o.accent} rounded-full opacity-50 group-hover:scale-150 transition-transform duration-700`} />
-              <div className="relative z-10 flex flex-col h-full">
-                <div className="w-12 h-12 bg-card rounded-2xl flex items-center justify-center shadow-sm mb-5 group-hover:rotate-6 transition-transform">
-                  <Icon className="w-6 h-6" strokeWidth={2.2} />
+      <div className="grid grid-cols-1 md:grid-cols-6 gap-5">
+        {/* SEO - large */}
+        <div className="md:col-span-4 group relative rounded-[32px] bg-dexon-green/30 border border-black/5 p-7 sm:p-9 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[280px] flex flex-col lg:flex-row items-stretch gap-0">
+          <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-dexon-green/40 blur-3xl rounded-full" />
+
+          {/* Text content */}
+          <div className="relative z-10 flex flex-col justify-center flex-1 max-w-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4 w-fit">
+              <Search className="w-3.5 h-3.5" /> SEO
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-[1.05] text-foreground">Rank where buyers are actually searching.</h3>
+            <p className="mt-3 text-sm text-foreground/60">Technical audits, keyword strategy, on-page and link building — compounding traffic month after month.</p>
+            <div className="mt-5 flex flex-wrap gap-2">
+              {["Technical SEO", "Keywords", "Backlinks", "Local"].map(t => (
+                <span key={t} className="px-3 py-1 rounded-full bg-white/70 backdrop-blur text-xs font-semibold text-foreground/70">{t}</span>
+              ))}
+            </div>
+          </div>
+
+          {/* Image */}
+          <div className="relative flex-shrink-0 flex items-end justify-center lg:justify-end w-full lg:w-auto mt-6 lg:mt-0 lg:self-end">
+            <motion.img
+              src={seoImg}
+              alt="SEO ranking illustration"
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] drop-shadow-2xl pointer-events-none object-contain"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+        </div>
+
+        {/* Paid Ads */}
+        <div className="md:col-span-2 group relative rounded-[32px] bg-[#f5e7a8]/60 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[280px] flex flex-col gap-4">
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4 w-fit">
+              <Target className="w-3.5 h-3.5" /> Paid Ads
+            </div>
+            <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">High-ROAS ad campaigns.</h3>
+            <p className="mt-2 text-sm text-foreground/60">Google, Meta, TikTok, LinkedIn.</p>
+          </div>
+          <div className="flex-1 flex items-end justify-center">
+            <img
+              src={adsImg}
+              alt="Paid advertising target illustration"
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="w-full max-w-[180px] sm:max-w-[200px] drop-shadow-xl object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Social */}
+        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-cyan/30 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[280px] flex flex-col gap-4">
+          <div className="relative z-10">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4 w-fit">
+              <Share2 className="w-3.5 h-3.5" /> Social
+            </div>
+            <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">Social that builds a brand.</h3>
+            <p className="mt-2 text-sm text-foreground/60">Calendars, creative & community.</p>
+          </div>
+          <div className="flex-1 flex items-end justify-center">
+            <img
+              src={socialImg}
+              alt="Social media phone illustration"
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="w-full max-w-[170px] sm:max-w-[190px] drop-shadow-xl object-contain"
+            />
+          </div>
+        </div>
+
+        {/* Email - large */}
+        <div className="md:col-span-4 group relative rounded-[32px] bg-[#ece9e4] border border-black/5 p-7 sm:p-9 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[280px] flex flex-col lg:flex-row items-stretch gap-0">
+          <div className="absolute -top-20 -left-20 w-72 h-72 bg-dexon-green/30 blur-3xl rounded-full" />
+
+          {/* Text content */}
+          <div className="relative z-10 flex flex-col justify-center flex-1 max-w-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4 w-fit">
+              <Mail className="w-3.5 h-3.5" /> Email & Lifecycle
+            </div>
+            <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-[1.05] text-foreground">Email flows that print repeat revenue.</h3>
+            <p className="mt-3 text-sm text-foreground/60">Welcome series, abandoned cart, win-back, newsletters — segmented and split-tested for real conversion lift.</p>
+            <div className="mt-5 grid grid-cols-3 gap-3 max-w-xs">
+              <div><div className="text-2xl font-black">48%</div><div className="text-[11px] text-foreground/55 font-semibold">Avg open</div></div>
+              <div><div className="text-2xl font-black">8x</div><div className="text-[11px] text-foreground/55 font-semibold">ROI</div></div>
+              <div><div className="text-2xl font-black">24/7</div><div className="text-[11px] text-foreground/55 font-semibold">Automated</div></div>
+            </div>
+          </div>
+
+          {/* Image */}
+          <div className="relative flex-shrink-0 flex items-end justify-center lg:justify-end w-full lg:w-auto mt-6 lg:mt-0 lg:self-end">
+            <motion.img
+              src={emailImg}
+              alt="Email automation illustration"
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="w-full max-w-[200px] sm:max-w-[240px] lg:max-w-[280px] drop-shadow-2xl pointer-events-none object-contain"
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="md:col-span-3 group relative rounded-[32px] bg-background border border-border p-5 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-500 flex items-center gap-5">
+          <img
+            src={contentImg}
+            alt="Content strategy"
+            loading="lazy"
+            width={1024}
+            height={1024}
+            className="w-20 h-20 shrink-0 object-contain"
+          />
+          <div>
+            <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-muted text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-2">
+              <PenSquare className="w-3 h-3" /> Content
+            </div>
+            <h3 className="text-lg font-black tracking-tight">Content that ranks & converts</h3>
+            <p className="mt-1 text-sm text-muted-foreground">Blog, landing pages, ad copy & brand voice — written by humans, optimised for search.</p>
+          </div>
+        </div>
+
+        {/* Analytics */}
+        <div className="md:col-span-3 group relative rounded-[32px] bg-background border border-border p-5 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-500 flex items-start gap-4">
+          <div className="w-12 h-12 shrink-0 rounded-2xl bg-dexon-yellow/50 flex items-center justify-center">
+            <BarChart3 className="w-6 h-6" />
+          </div>
+          <div>
+            <h3 className="text-lg font-black tracking-tight">Analytics & CRO</h3>
+            <p className="mt-1 text-sm text-muted-foreground">GA4, dashboards and A/B tests — every visitor worth more than the last. Reports you'll actually read.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+/* =========================================================
+   GROWTH FUNNEL (unique to marketing)
+========================================================= */
+const funnel = [
+  { stage: "Attract", desc: "SEO + paid + social pulls qualified traffic into your funnel.", color: "bg-dexon-green/40", width: "w-full" },
+  { stage: "Engage", desc: "Landing pages, content & retargeting keep them moving.", color: "bg-[#f5e7a8]", width: "w-[85%]" },
+  { stage: "Convert", desc: "Optimised checkouts & lead forms turn visits into revenue.", color: "bg-dexon-cyan/50", width: "w-[68%]" },
+  { stage: "Retain", desc: "Email + lifecycle keeps them buying again and again.", color: "bg-[#9be3a0]", width: "w-[48%]" },
+];
+
+const Funnel = () => (
+  <section className="py-16 sm:py-20 lg:py-24 bg-background">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div className="grid lg:grid-cols-2 gap-10 lg:gap-14 items-center">
+        <div>
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground mb-3">The growth engine</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.05]">
+            Built around a full-funnel framework, not random tactics.
+          </h2>
+          <p className="mt-5 text-muted-foreground max-w-md">
+            We don't just "run ads" — we map your customer's journey from first impression to repeat
+            purchase, then optimise every stage with data.
+          </p>
+          <Link to="/contact" className="mt-8 inline-flex items-center gap-2 h-12 px-6 rounded-2xl bg-black text-white text-sm font-semibold hover:scale-[1.03] transition-transform">
+            Talk strategy <ArrowUpRight className="w-4 h-4" />
+          </Link>
+        </div>
+
+        <div className="relative rounded-[32px] bg-[#f5f3ee] border border-black/5 p-6 sm:p-8 space-y-3">
+          {funnel.map((f, i) => (
+            <div key={f.stage} className={`relative ${f.width} mx-auto rounded-2xl ${f.color} px-5 py-5 sm:py-6 hover:scale-[1.02] transition-transform`}>
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <div className="text-[10px] font-bold uppercase tracking-widest text-black/50">Stage 0{i + 1}</div>
+                  <div className="text-lg sm:text-xl font-black text-[#111]">{f.stage}</div>
                 </div>
-                <h3 className="text-2xl font-black tracking-tight mb-2">{o.title}</h3>
-                <p className="text-sm text-foreground/70 leading-relaxed max-w-md">{o.desc}</p>
+                <ArrowUpRight className="w-5 h-5 text-black/50" />
               </div>
+              <p className="mt-1.5 text-xs sm:text-sm text-black/60 max-w-md">{f.desc}</p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+/* =========================================================
+   PROCESS
+========================================================= */
+const steps = [
+  { t: "Discover & Audit", d: "We dig into your business, audience and current marketing to find the biggest gaps.", icon: ClipboardCheck },
+  { t: "Strategy & Plan", d: "Channel mix, KPIs, budgets and creative direction — agreed and ready to execute.", icon: Target },
+  { t: "Launch & Optimise", d: "We launch, monitor daily and iterate weekly — on real data, never guesses.", icon: Rocket },
+  { t: "Scale & Report", d: "What works gets scaled hard. Every result reported transparently, every week.", icon: TrendingUp },
+];
+
+const Process = () => (
+  <section className="py-16 sm:py-20 lg:py-24 bg-card">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div className="text-center max-w-2xl mx-auto mb-12">
+        <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground mb-3">How we work</p>
+        <h2 className="text-[22px] xs:text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.05] whitespace-nowrap">
+          From audit to ROI in <span className="bg-dexon-yellow px-2 sm:px-3 rounded-xl sm:rounded-2xl">four moves.</span>
+        </h2>
+      </div>
+
+      <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+        {steps.map((s, i) => {
+          const Icon = s.icon;
+          return (
+            <div key={s.t} className="group relative rounded-[28px] bg-background border border-border p-6 sm:p-7 hover:-translate-y-1 hover:shadow-xl transition-all duration-500 overflow-hidden">
+              <div className="flex items-center justify-between mb-5">
+                <span className="text-5xl font-black text-foreground/10 leading-none">0{i + 1}</span>
+                <span className="w-12 h-12 rounded-2xl bg-dexon-yellow flex items-center justify-center group-hover:rotate-6 transition-transform">
+                  <Icon className="w-5 h-5" />
+                </span>
+              </div>
+              <h3 className="text-lg font-black tracking-tight">{s.t}</h3>
+              <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{s.d}</p>
             </div>
           );
         })}
@@ -183,114 +381,38 @@ const Offer = () => (
   </section>
 );
 
-/* ---------- PROCESS (growth curve timeline) ---------- */
-const steps = [
-  { t: "Discover & Audit", d: "We dig into your business, audience & current marketing to find the biggest growth gaps.", icon: Search },
-  { t: "Strategy & Plan", d: "Channel mix, KPIs, budgets & creative direction — agreed and ready to execute.", icon: Target },
-  { t: "Launch & Optimise", d: "We launch, monitor daily and iterate weekly — on real data, never guesses.", icon: Rocket },
-  { t: "Scale & Report", d: "Once we find what works, we scale it hard — and report every result transparently.", icon: TrendingUp },
+/* =========================================================
+   INDUSTRIES
+========================================================= */
+const industries = [
+  { name: "E-commerce", icon: ShoppingBag, tint: "bg-dexon-yellow/40" },
+  { name: "SaaS", icon: Briefcase, tint: "bg-dexon-cyan/40" },
+  { name: "Healthcare", icon: HeartPulse, tint: "bg-dexon-green/40" },
+  { name: "Real Estate", icon: Building2, tint: "bg-[#f5e7a8]" },
+  { name: "Education", icon: GraduationCap, tint: "bg-dexon-cyan/30" },
+  { name: "Restaurants", icon: Utensils, tint: "bg-dexon-yellow/30" },
+  { name: "Travel", icon: Plane, tint: "bg-dexon-green/30" },
+  { name: "Creators", icon: Palette, tint: "bg-[#f5e7a8]/70" },
 ];
 
-const Process = () => (
-  <section className="py-20 lg:py-28 bg-dexon-dark text-primary-foreground relative overflow-hidden">
-    <div className="absolute inset-0 opacity-[0.04]" style={{ backgroundImage: "linear-gradient(currentColor 1px, transparent 1px), linear-gradient(90deg, currentColor 1px, transparent 1px)", backgroundSize: "60px 60px" }} />
-
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl relative">
-      <div className="text-center mb-16">
-        <p className="text-xs font-bold uppercase tracking-[0.25em] text-dexon-yellow mb-3">Our process</p>
-        <h2 className="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight leading-[1.05]">From audit to <span className="text-dexon-yellow">ROI</span> in 4 moves.</h2>
-      </div>
-
-      {/* curve */}
-      <div className="relative">
-        <svg viewBox="0 0 1000 200" className="absolute inset-x-0 top-10 w-full hidden lg:block" preserveAspectRatio="none">
-          <path d="M50 160 Q280 160 380 100 T720 50 T960 20" fill="none" stroke="hsl(var(--dexon-yellow))" strokeWidth="3" strokeDasharray="6 8" />
-        </svg>
-
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-          {steps.map((s, i) => {
-            const Icon = s.icon;
-            return (
-              <div key={i} className="relative">
-                <div className="relative bg-card text-foreground rounded-3xl p-6 hover:-translate-y-2 transition-transform duration-500 shadow-2xl">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-5xl font-black text-dexon-yellow leading-none">0{i + 1}</span>
-                    <span className="w-12 h-12 rounded-full bg-dexon-yellow flex items-center justify-center"><Icon className="w-5 h-5" /></span>
-                  </div>
-                  <h3 className="text-lg font-black mb-2">{s.t}</h3>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{s.d}</p>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </div>
-  </section>
-);
-
-/* ---------- CHANNELS marquee ---------- */
-import LogoMarquee from "@/components/LogoMarquee";
-const channelLogos = [
-  { name: "Google Ads", slug: "googleads" },
-  { name: "Meta Ads", slug: "meta" },
-  { name: "TikTok", slug: "tiktok" },
-  { name: "LinkedIn", slug: "linkedin" },
-  { name: "SEMrush", slug: "semrush" },
-  { name: "Ahrefs", slug: "ahrefs" },
-  { name: "Google Analytics", slug: "googleanalytics" },
-  { name: "HubSpot", slug: "hubspot" },
-  { name: "Mailchimp", slug: "mailchimp" },
-  { name: "Klaviyo", slug: "klaviyo" },
-  { name: "Hotjar", slug: "hotjar" },
-  { name: "Looker", slug: "looker" },
-];
-const Channels = () => (
-  <LogoMarquee eyebrow="Channels & tools we live in" items={channelLogos} variant="cream" />
-);
-
-/* ---------- FAQ chat-bubble ---------- */
-const faqs = [
-  { q: "How long until I see results?", a: "Paid ads can drive results within days. SEO and content typically take 3–6 months to compound, but the gains are long-lasting." },
-  { q: "Do you require long contracts?", a: "Nope. All plans are month-to-month — we earn your business every single month." },
-  { q: "Will I own my ad accounts and data?", a: "Always. We build everything inside your accounts so you keep full ownership of assets and history." },
-  { q: "Do you handle creative and copy?", a: "Yes — designers, copywriters and video editors are all in-house, included in every plan." },
-  { q: "Can I upgrade or downgrade?", a: "Anytime. Just give us 14 days notice and we'll adjust your plan with zero hidden fees." },
-];
-
-const FAQ = () => (
-  <section className="py-20 lg:py-28 bg-background">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
-      <div className="text-center mb-12">
-        <p className="text-xs font-bold uppercase tracking-[0.25em] text-muted-foreground mb-3">FAQ</p>
-        <h2 className="text-4xl sm:text-5xl font-black tracking-tight">Real questions, <span className="bg-dexon-yellow px-3 rounded-2xl">honest answers.</span></h2>
-      </div>
-      <Accordion type="single" collapsible className="space-y-4">
-        {faqs.map((f, i) => (
-          <AccordionItem key={i} value={`i${i}`} className="border-b-0 bg-dexon-cream rounded-3xl px-6 sm:px-7 hover:bg-dexon-yellow/40 transition-colors">
-            <AccordionTrigger className="text-left text-base sm:text-lg font-bold hover:no-underline py-5 [&[data-state=open]>div]:bg-dexon-yellow [&[data-state=open]>div]:rotate-45">
-              <div className="ml-auto order-2 w-8 h-8 rounded-full bg-card flex items-center justify-center transition-all">
-                <ArrowUpRight className="w-4 h-4" />
-              </div>
-              <span className="order-1 flex-1 pr-4">{f.q}</span>
-            </AccordionTrigger>
-            <AccordionContent className="text-sm sm:text-base text-foreground/70 leading-relaxed pb-6 pl-1">{f.a}</AccordionContent>
-          </AccordionItem>
-        ))}
-      </Accordion>
-    </div>
-  </section>
-);
-
-/* ---------- STATS ---------- */
-const Stats = () => (
-  <section className="py-16 bg-dexon-yellow">
+const Industries = () => (
+  <section className="py-16 sm:py-20 lg:py-24 bg-background">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-      <div className="grid grid-cols-2 lg:grid-cols-4 gap-8">
-        {[{v:250,s:"+",l:"Campaigns launched"},{v:12,s:"x",l:"Average ROAS"},{v:98,s:"%",l:"Client retention"},{v:40,s:"M+",l:"Impressions delivered"}].map((s,i)=>(
-          <div key={i} className="text-center sm:text-left">
-            <div className="text-5xl lg:text-6xl font-black leading-none"><Counter to={s.v} suffix={s.s}/></div>
-            <p className="mt-2 text-sm font-semibold text-foreground/70">{s.l}</p>
+      <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-12">
+        <div>
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground mb-3">Industries we grow</p>
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.05]">Built for brands like yours.</h2>
+        </div>
+        <p className="max-w-sm text-sm sm:text-base text-muted-foreground">
+          We've shipped campaigns across dozens of verticals — each playbook tuned to the way your customers actually buy.
+        </p>
+      </div>
+
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-5">
+        {industries.map(({ name, icon: Icon, tint }) => (
+          <div key={name} className={`group relative rounded-3xl border border-border ${tint} p-6 sm:p-7 min-h-[150px] flex flex-col justify-between hover:-translate-y-1 transition-transform duration-500`}>
+            <Icon className="w-7 h-7" />
+            <div className="text-lg sm:text-xl font-black tracking-tight">{name}</div>
           </div>
         ))}
       </div>
@@ -298,14 +420,252 @@ const Stats = () => (
   </section>
 );
 
+/* =========================================================
+   REPORTING (unique — transparency)
+========================================================= */
+const Reporting = () => (
+  <section className="py-16 sm:py-20 lg:py-24 bg-background">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <div className="grid lg:grid-cols-2 gap-6 items-stretch">
+        <div className="relative rounded-[36px] bg-[#111] text-white p-8 sm:p-10 overflow-hidden flex flex-col justify-between min-h-[460px]">
+          <div className="absolute -top-20 -right-20 w-72 h-72 bg-dexon-green/20 blur-3xl rounded-full" />
+          <div className="relative z-10">
+            <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-white/50 mb-3">Reporting & transparency</p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight leading-[1.05]">
+              You see every
+              <br />number,{" "}
+              <span className="text-dexon-green">every week.</span>
+            </h2>
+            <p className="mt-5 text-white/60 max-w-md">
+              Live dashboards, plain-English weekly summaries, and a Slack channel where real humans
+              answer. No black-box agency BS.
+            </p>
+          </div>
+          <div className="relative z-10 mt-8 grid grid-cols-2 gap-4">
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-5">
+              <LineChart className="w-6 h-6 text-dexon-green mb-3" />
+              <div className="text-2xl font-black">Live</div>
+              <p className="text-xs text-white/50 font-medium mt-1">GA4 + ad dashboards</p>
+            </div>
+            <div className="rounded-2xl bg-white/5 border border-white/10 p-5">
+              <Megaphone className="w-6 h-6 text-dexon-yellow mb-3" />
+              <div className="text-2xl font-black">Weekly</div>
+              <p className="text-xs text-white/50 font-medium mt-1">Plain-English summary</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="grid grid-cols-2 gap-5">
+          {[
+            { stat: "+187%", label: "Organic traffic", icon: TrendingUp, bg: "bg-dexon-green/30" },
+            { stat: "12x", label: "Average ROAS", icon: Sparkles, bg: "bg-dexon-yellow/40" },
+            { stat: "+64%", label: "Conversion rate", icon: Zap, bg: "bg-dexon-cyan/40" },
+            { stat: "98%", label: "Client retention", icon: Award, bg: "bg-[#f5e7a8]" },
+          ].map(({ stat, label, icon: Icon, bg }) => (
+            <div key={label} className={`relative rounded-3xl border border-border p-6 sm:p-7 ${bg} flex flex-col justify-between min-h-[210px] hover:-translate-y-1 transition-transform duration-500`}>
+              <Icon className="w-7 h-7 text-foreground/70" />
+              <div>
+                <div className="text-4xl sm:text-5xl font-black tracking-tight text-foreground">{stat}</div>
+                <p className="mt-2 text-sm font-semibold text-foreground/60">{label}</p>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+);
+
+/* =========================================================
+   TOOLS (no background, monochrome logos)
+========================================================= */
+const tools = [
+  { name: "Google Ads", slug: "googleads" },
+  { name: "Google Analytics", slug: "googleanalytics" },
+  { name: "Google Tag Manager", slug: "googletagmanager" },
+  { name: "Google Search Console", slug: "googlesearchconsole" },
+
+  { name: "Meta", slug: "meta" },
+  { name: "Facebook", slug: "facebook" },
+  { name: "Instagram", slug: "instagram" },
+  { name: "YouTube", slug: "youtube" },
+  { name: "Pinterest", slug: "pinterest" },
+  { name: "X", slug: "x" },
+
+  { name: "SEMrush", slug: "semrush" },
+  { name: "HubSpot", slug: "hubspot" },
+  { name: "Mailchimp", slug: "mailchimp" },
+  { name: "Hotjar", slug: "hotjar" },
+  { name: "Looker Studio", slug: "looker" },
+  { name: "Zapier", slug: "zapier" },
+  { name: "WhatsApp", slug: "whatsapp" },
+];
+
+const Tools = () => {
+  const logos = tools.map((tool) => (
+    <div key={tool.slug} className="tools-logo-slot">
+      <img
+        src={`https://cdn.simpleicons.org/${tool.slug}`}
+        alt={tool.name}
+        title={tool.name}
+        loading="lazy"
+        className="tools-logo"
+        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+      />
+    </div>
+  ));
+
+  return (
+    <section className="py-16 sm:py-20 bg-background overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
+        <p className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-12">
+          Channels &amp; Tools We Live In
+        </p>
+        <div className="tools-marquee-viewport">
+          <div className="tools-marquee-track">
+            <div className="tools-marquee-group">{logos}</div>
+            <div className="tools-marquee-group" aria-hidden="true">{logos}</div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .tools-marquee-viewport {
+          overflow: hidden;
+          width: 100%;
+          -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        }
+
+        /* The track holds BOTH groups. We animate it by -50% of its own width,
+           which equals exactly one full group width — the seamless reset point. */
+        .tools-marquee-track {
+          display: flex;
+          align-items: center;
+          width: max-content;
+          will-change: transform;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          animation: tools-scroll 70s linear infinite;
+          transform: translateZ(0);
+        }
+
+        .tools-marquee-track:hover {
+          animation-play-state: paused;
+        }
+
+        .tools-marquee-group {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+        }
+
+        /* Fixed-size wrapper slots eliminate all width jitter */
+        .tools-logo-slot {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 48px;
+          height: 48px;
+          flex-shrink: 0;
+          margin: 0 2rem;
+        }
+
+        .tools-logo {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          opacity: 0.7;
+          transition: opacity 0.25s ease, transform 0.25s ease;
+          display: block;
+        }
+
+        .tools-logo:hover {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+
+        /* -50% of total track = exactly one group width → zero-visible reset */
+        @keyframes tools-scroll {
+          from { transform: translate3d(0, 0, 0); }
+          to   { transform: translate3d(-50%, 0, 0); }
+        }
+
+        @media (max-width: 768px) {
+          .tools-logo-slot { width: 36px; height: 36px; margin: 0 1.25rem; }
+          .tools-marquee-track { animation-duration: 50s; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .tools-marquee-track { animation: none !important; }
+        }
+      `}</style>
+    </section>
+  );
+};
+/* =========================================================
+   FAQ
+========================================================= */
+const faqs = [
+  { q: "How long until I see results?", a: "Paid ads can drive results within days. SEO and content typically take 3–6 months to compound, but the gains are long-lasting." },
+  { q: "Do you require long contracts?", a: "Nope. All plans are month-to-month — we earn your business every single month." },
+  { q: "Will I own my ad accounts and data?", a: "Always. We build everything inside your accounts so you keep full ownership of assets and history." },
+  { q: "Do you handle creative and copy?", a: "Yes — designers, copywriters and video editors are all in-house, included in every plan." },
+  { q: "How do you report on performance?", a: "Live dashboards plus a weekly plain-English summary. You'll always know exactly what's working." },
+];
+
+const FAQ = () => {
+  const [open, setOpen] = useState<number | null>(0);
+  return (
+    <section className="py-16 sm:py-20 lg:py-24 bg-card">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <div className="text-center mb-12">
+          <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-muted-foreground mb-3">FAQ</p>
+          <h2 className="text-[22px] xs:text-2xl sm:text-4xl lg:text-5xl font-black tracking-tight whitespace-nowrap">
+            Real questions, <span className="bg-dexon-yellow px-2 sm:px-3 rounded-xl sm:rounded-2xl">honest answers.</span>
+          </h2>
+        </div>
+        <div className="space-y-3">
+          {faqs.map((f, i) => {
+            const isOpen = open === i;
+            return (
+              <div key={i} className={`rounded-3xl border border-border bg-background overflow-hidden transition-all ${isOpen ? "shadow-md" : ""}`}>
+                <button
+                  onClick={() => setOpen(isOpen ? null : i)}
+                  className="w-full flex items-center justify-between gap-4 text-left px-6 sm:px-7 py-5"
+                >
+                  <span className="flex items-center gap-4">
+                    <span className="text-sm font-black text-muted-foreground/70 w-6">0{i + 1}</span>
+                    <span className="text-base sm:text-lg font-bold">{f.q}</span>
+                  </span>
+                  <span className={`w-9 h-9 rounded-full flex items-center justify-center transition-colors shrink-0 ${isOpen ? "bg-dexon-yellow" : "bg-muted"}`}>
+                    {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
+                  </span>
+                </button>
+                {isOpen && (
+                  <div className="px-6 sm:px-7 pb-6 pl-16 text-sm sm:text-base text-muted-foreground leading-relaxed">
+                    {f.a}
+                  </div>
+                )}
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 const DigitalMarketing = () => (
   <div className="min-h-screen bg-background">
     <Header />
     <Hero />
     <Offer />
+    <Funnel />
     <Process />
-    <Channels />
-    <Stats />
+    <Industries />
+    <Reporting />
+    <Tools />
     <FAQ />
     <CtaSection />
     <Footer />

@@ -44,7 +44,7 @@ const CtaSection = () => {
                 {/* Numbers */}
                 <div className="flex flex-col text-sm sm:text-base font-semibold text-foreground">
                   <span className="tracking-wide">+91 89678 21570</span>
-                  <span className="tracking-wide">+91 85098 51562</span>
+                  <span className="tracking-wide">+91 89000 74438</span>
                 </div>
 
                 {/* Label */}
