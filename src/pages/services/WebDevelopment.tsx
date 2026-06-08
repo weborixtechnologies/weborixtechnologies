@@ -50,7 +50,7 @@ const Hero = () => (
           {/* Badge */}
           <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/80 backdrop-blur-md border border-white shadow-sm w-fit relative z-10">
             <span className="text-[11px] font-semibold tracking-[0.12em] uppercase text-[#9f8422]">
-              Web Development Studio
+              Web Development
             </span>
 
             <div className="w-5 h-5 rounded-full bg-[#e3c85d] flex items-center justify-center text-[10px] font-bold">
@@ -64,7 +64,6 @@ const Hero = () => (
               We build websites
               <br />
               that
-
               <span className="relative ml-3 text-[#9f8422] inline-block">
                 actually convert.
                 <span className="absolute left-0 bottom-1 h-3 w-full rounded-full bg-[#e3c85d]/30 -z-10" />
@@ -79,41 +78,47 @@ const Hero = () => (
           </div>
 
           {/* Buttons */}
-          <div className="mt-7 flex flex-wrap gap-3 relative z-10">
+          <div className="mt-7 flex flex-nowrap sm:flex-wrap gap-3 relative z-10">
             <Link
               to="/contact"
-              className="h-12 px-7 inline-flex items-center justify-center rounded-2xl bg-black text-white text-sm font-semibold shadow-lg hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300"
+              className="flex-1 sm:flex-none h-12 px-4 sm:px-7 inline-flex items-center justify-center rounded-2xl bg-black text-white text-sm font-semibold shadow-lg hover:shadow-2xl hover:-translate-y-0.5 transition-all duration-300 whitespace-nowrap"
             >
               Start a Project
             </Link>
 
             <a
               href="#offer"
-              className="h-12 px-7 inline-flex items-center justify-center rounded-2xl bg-white border border-black/10 text-sm font-semibold hover:bg-black hover:text-white transition-all duration-300"
+              className="flex-1 sm:flex-none h-12 px-4 sm:px-7 inline-flex items-center justify-center rounded-2xl bg-white border border-black/10 text-sm font-semibold hover:bg-black hover:text-white transition-all duration-300 whitespace-nowrap"
             >
               What We Build
             </a>
           </div>
 
           {/* Stats */}
-          <div className="mt-auto pt-6 grid grid-cols-3 gap-3 relative z-10">
-            <div className="rounded-3xl bg-white/70 backdrop-blur-md border border-white/70 p-4 shadow-sm">
-              <h4 className="text-2xl font-black text-[#111]">180+</h4>
-              <p className="mt-1 text-xs font-medium text-black/50">
+          <div className="mt-auto pt-4 sm:pt-6 grid grid-cols-3 gap-2 sm:gap-3 relative z-10">
+            <div className="rounded-2xl sm:rounded-3xl bg-white/70 backdrop-blur-md border border-white/70 p-3 sm:p-4 shadow-sm">
+              <h4 className="text-xl sm:text-2xl font-black text-[#111] leading-none">
+                180+
+              </h4>
+              <p className="mt-1 text-[10px] sm:text-xs font-medium text-black/50 whitespace-nowrap">
                 Sites Shipped
               </p>
             </div>
 
-            <div className="rounded-3xl bg-white/70 backdrop-blur-md border border-white/70 p-4 shadow-sm">
-              <h4 className="text-2xl font-black text-[#111]">98</h4>
-              <p className="mt-1 text-xs font-medium text-black/50">
+            <div className="rounded-2xl sm:rounded-3xl bg-white/70 backdrop-blur-md border border-white/70 p-3 sm:p-4 shadow-sm">
+              <h4 className="text-xl sm:text-2xl font-black text-[#111] leading-none">
+                98
+              </h4>
+              <p className="mt-1 text-[10px] sm:text-xs font-medium text-black/50 whitespace-nowrap">
                 Avg Lighthouse
               </p>
             </div>
 
-            <div className="rounded-3xl bg-white/70 backdrop-blur-md border border-white/70 p-4 shadow-sm">
-              <h4 className="text-2xl font-black text-[#111]">4 Wks</h4>
-              <p className="mt-1 text-xs font-medium text-black/50">
+            <div className="rounded-2xl sm:rounded-3xl bg-white/70 backdrop-blur-md border border-white/70 p-3 sm:p-4 shadow-sm">
+              <h4 className="text-xl sm:text-2xl font-black text-[#111] leading-none whitespace-nowrap">
+                4 Wks
+              </h4>
+              <p className="mt-1 text-[10px] sm:text-xs font-medium text-black/50 whitespace-nowrap">
                 Avg Launch
               </p>
             </div>
@@ -142,7 +147,7 @@ const Hero = () => (
             <motion.img
               src={heroMockup}
               alt="Website Preview"
-              className="relative z-10 w-full max-w-[280px] mx-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.15)]"
+              className="relative z-10 w-full max-w-[240px] sm:max-w-[280px] mx-auto mt-6 lg:mt-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.15)]"
               animate={{ y: [0, -8, 0] }}
               transition={{
                 duration: 4,
@@ -206,10 +211,12 @@ const Offer = () => (
       {/* Bento grid */}
       <div className="grid grid-cols-1 md:grid-cols-6 gap-5">
         {/* Marketing - large */}
-        <div className="md:col-span-4 group relative rounded-[32px] bg-[#f5e7a8]/60 border border-black/5 p-7 sm:p-9 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[340px] flex flex-col justify-between">
+        <div className="md:col-span-4 group relative rounded-[32px] bg-[#f5e7a8]/60 border border-black/5 p-7 sm:p-9 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[280px] flex flex-col lg:flex-row items-stretch gap-0">
           <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-[#e3c85d]/40 blur-3xl rounded-full" />
-          <div className="relative z-10 max-w-sm">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4">
+
+          {/* Text content */}
+          <div className="relative z-10 flex flex-col justify-center flex-1 max-w-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4 w-fit">
               <Globe className="w-3.5 h-3.5" /> Marketing
             </div>
             <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-[1.05] text-foreground">Marketing websites that capture leads 24/7.</h3>
@@ -220,61 +227,71 @@ const Offer = () => (
               ))}
             </div>
           </div>
-          <motion.img
-            src={marketingImg}
-            alt="Marketing website mockup"
-            loading="lazy"
-            width={1024}
-            height={1024}
-            className="absolute right-[-30px] bottom-[-20px] w-[300px] sm:w-[380px] drop-shadow-2xl pointer-events-none"
-            animate={{ y: [0, -8, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          />
+
+          {/* Image */}
+          <div className="relative flex-shrink-0 flex items-end justify-center lg:justify-end w-full lg:w-auto mt-6 lg:mt-0 lg:self-end">
+            <motion.img
+              src={marketingImg}
+              alt="Marketing website mockup"
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="w-full max-w-[220px] sm:max-w-[260px] lg:max-w-[300px] drop-shadow-2xl pointer-events-none object-contain self-end"
+              animate={{ y: [0, -8, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
         </div>
 
         {/* E-commerce - tall */}
-        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-cyan/30 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[340px] flex flex-col justify-between">
+        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-cyan/30 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[280px] flex flex-col gap-4">
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4 w-fit">
               <ShoppingBag className="w-3.5 h-3.5" /> E-commerce
             </div>
             <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">Stores that actually convert.</h3>
             <p className="mt-2 text-sm text-foreground/60">Shopify, WooCommerce or fully custom checkouts.</p>
           </div>
-          <img
-            src={ecommerceImg}
-            alt="E-commerce store illustration"
-            loading="lazy"
-            width={1024}
-            height={1024}
-            className="mt-4 w-full max-w-[220px] mx-auto drop-shadow-xl"
-          />
+          <div className="flex-1 flex items-end justify-center">
+            <img
+              src={ecommerceImg}
+              alt="E-commerce store illustration"
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="w-full max-w-[180px] sm:max-w-[200px] drop-shadow-xl object-contain"
+            />
+          </div>
         </div>
 
         {/* SaaS - tall */}
-        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-green/30 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[340px] flex flex-col justify-between">
+        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-green/30 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[280px] flex flex-col gap-4">
           <div className="relative z-10">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4 w-fit">
               <Code2 className="w-3.5 h-3.5" /> Web apps
             </div>
             <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">SaaS & internal tools.</h3>
             <p className="mt-2 text-sm text-foreground/60">Dashboards, portals & APIs in React + Next.</p>
           </div>
-          <img
-            src={saasImg}
-            alt="SaaS dashboard illustration"
-            loading="lazy"
-            width={1024}
-            height={1024}
-            className="mt-4 w-full max-w-[240px] mx-auto drop-shadow-xl"
-          />
+          <div className="flex-1 flex items-end justify-center">
+            <img
+              src={saasImg}
+              alt="SaaS dashboard illustration"
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="w-full max-w-[200px] sm:max-w-[220px] drop-shadow-xl object-contain"
+            />
+          </div>
         </div>
 
         {/* Mobile-first - large with image right */}
-        <div className="md:col-span-4 group relative rounded-[32px] bg-[#ece9e4] border border-black/5 p-7 sm:p-9 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[340px] flex flex-col justify-between">
+        <div className="md:col-span-4 group relative rounded-[32px] bg-[#ece9e4] border border-black/5 p-7 sm:p-9 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[280px] flex flex-col lg:flex-row items-stretch gap-0">
           <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#e3c85d]/20 blur-3xl rounded-full" />
-          <div className="relative z-10 max-w-sm">
-            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4">
+
+          {/* Text content */}
+          <div className="relative z-10 flex flex-col justify-center flex-1 max-w-sm">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4 w-fit">
               <Smartphone className="w-3.5 h-3.5" /> Mobile-first
             </div>
             <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-[1.05] text-foreground">Pixel-perfect on every device.</h3>
@@ -285,50 +302,53 @@ const Offer = () => (
               <div><div className="text-2xl font-black">PWA</div><div className="text-[11px] text-foreground/55 font-semibold">Ready</div></div>
             </div>
           </div>
-          <motion.img
-            src={mobileImg}
-            alt="Responsive mobile screens"
-            loading="lazy"
-            width={1024}
-            height={1024}
-            className="absolute right-[-20px] bottom-[-10px] w-[280px] sm:w-[340px] drop-shadow-2xl pointer-events-none"
-            animate={{ y: [0, 6, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-          />
+
+          {/* Image */}
+          <div className="relative flex-shrink-0 flex items-end justify-center lg:justify-end w-full lg:w-auto mt-6 lg:mt-0 lg:self-end">
+            <motion.img
+              src={mobileImg}
+              alt="Responsive mobile screens"
+              loading="lazy"
+              width={1024}
+              height={1024}
+              className="w-full max-w-[200px] sm:max-w-[240px] lg:max-w-[280px] drop-shadow-2xl pointer-events-none object-contain"
+              animate={{ y: [0, 6, 0] }}
+              transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
+            />
+          </div>
         </div>
-{/* Performance */}
-<div className="md:col-span-3 group relative rounded-[32px] bg-background border border-border p-5 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-500 flex items-start gap-4">
-  <div className="w-12 h-12 shrink-0 rounded-2xl bg-dexon-yellow/50 flex items-center justify-center">
-    <Zap className="w-6 h-6" />
-  </div>
 
-  <div>
-    <h3 className="text-lg font-black tracking-tight">
-      Performance & SEO
-    </h3>
-    <p className="mt-1 text-sm text-muted-foreground">
-      Core Web Vitals, semantic HTML & structured data Google rewards.
-      95+ Lighthouse on every build.
-    </p>
-  </div>
-</div>
+        {/* Performance */}
+        <div className="md:col-span-3 group relative rounded-[32px] bg-background border border-border p-5 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-500 flex items-start gap-4">
+          <div className="w-12 h-12 shrink-0 rounded-2xl bg-dexon-yellow/50 flex items-center justify-center">
+            <Zap className="w-6 h-6" />
+          </div>
+          <div>
+            <h3 className="text-lg font-black tracking-tight">
+              Performance & SEO
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Core Web Vitals, semantic HTML & structured data Google rewards.
+              95+ Lighthouse on every build.
+            </p>
+          </div>
+        </div>
 
-{/* Care */}
-<div className="md:col-span-3 group relative rounded-[32px] bg-background border border-border p-5 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-500 flex items-start gap-4">
-  <div className="w-12 h-12 shrink-0 rounded-2xl bg-dexon-cyan/50 flex items-center justify-center">
-    <Wrench className="w-6 h-6" />
-  </div>
-
-  <div>
-    <h3 className="text-lg font-black tracking-tight">
-      Care & Support
-    </h3>
-    <p className="mt-1 text-sm text-muted-foreground">
-      Updates, security patches and content edits on a flexible monthly
-      plan — real humans, fast replies.
-    </p>
-  </div>
-</div>
+        {/* Care */}
+        <div className="md:col-span-3 group relative rounded-[32px] bg-background border border-border p-5 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-500 flex items-start gap-4">
+          <div className="w-12 h-12 shrink-0 rounded-2xl bg-dexon-cyan/50 flex items-center justify-center">
+            <Wrench className="w-6 h-6" />
+          </div>
+          <div>
+            <h3 className="text-lg font-black tracking-tight">
+              Care & Support
+            </h3>
+            <p className="mt-1 text-sm text-muted-foreground">
+              Updates, security patches and content edits on a flexible monthly
+              plan — real humans, fast replies.
+            </p>
+          </div>
+        </div>
       </div>
     </div>
   </section>
@@ -507,39 +527,132 @@ const stackLogos = [
   { name: "React", slug: "react" },
   { name: "Next.js", slug: "nextdotjs" },
   { name: "TypeScript", slug: "typescript" },
+  { name: "JavaScript", slug: "javascript" },
   { name: "Tailwind CSS", slug: "tailwindcss" },
   { name: "Node.js", slug: "nodedotjs" },
-  { name: "Vite", slug: "vite" },
+  { name: "Express", slug: "express" },
+  { name: "MongoDB", slug: "mongodb" },
+  { name: "PostgreSQL", slug: "postgresql" },
+  { name: "MySQL", slug: "mysql" },
+  { name: "Redis", slug: "redis" },
+  { name: "Prisma", slug: "prisma" },
+  { name: "Firebase", slug: "firebase" },
+  { name: "Supabase", slug: "supabase" },
+  { name: "Docker", slug: "docker" },
+  { name: "Git", slug: "git" },
+  { name: "GitHub", slug: "github" },
+  { name: "Vercel", slug: "vercel" },
+  { name: "Netlify", slug: "netlify" },
+  { name: "Linux", slug: "linux" },
+  { name: "Figma", slug: "figma" },
   { name: "Shopify", slug: "shopify" },
   { name: "WordPress", slug: "wordpress" },
-  { name: "Supabase", slug: "supabase" },
   { name: "Stripe", slug: "stripe" },
-  { name: "Vercel", slug: "vercel" },
-  { name: "Figma", slug: "figma" },
+  { name: "Python", slug: "python" },
+  { name: "CSS", slug: "css" },
+  { name: "GitLab", slug: "gitlab" },
+  { name: "Cloudflare", slug: "cloudflare" },
 ];
-const Stack = () => (
-  <section className="py-16 sm:py-20 bg-background">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-      <p className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-10">
-        Our stack
-      </p>
-      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-x-10 gap-y-10 items-center justify-items-center">
-        {stackLogos.map((l) => (
-          <img
-            key={l.slug}
-            src={`https://cdn.simpleicons.org/${l.slug}/111111`}
-            alt={l.name}
-            title={l.name}
-            loading="lazy"
-            className="h-8 sm:h-9 w-auto opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300"
-            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
-          />
-        ))}
-      </div>
-    </div>
-  </section>
-);
 
+const Stack = () => {
+  const logos = stackLogos.map((logo) => (
+    <div key={logo.slug} className="stack-logo-slot">
+      <img
+        src={`https://cdn.simpleicons.org/${logo.slug}`}
+        alt={logo.name}
+        title={logo.name}
+        loading="lazy"
+        className="stack-logo"
+        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+      />
+    </div>
+  ));
+
+  return (
+    <section className="py-16 sm:py-20 bg-background overflow-hidden">
+      <div className="max-w-7xl mx-auto px-4">
+        <p className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-12">
+          Our Stack
+        </p>
+
+        <div className="stack-viewport">
+          <div className="stack-track">
+            <div className="stack-group">{logos}</div>
+            <div className="stack-group" aria-hidden="true">{logos}</div>
+          </div>
+        </div>
+      </div>
+
+      <style>{`
+        .stack-viewport {
+          overflow: hidden;
+          width: 100%;
+          -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+          mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+        }
+
+        .stack-track {
+          display: flex;
+          align-items: center;
+          width: max-content;
+          will-change: transform;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          animation: stack-scroll 70s linear infinite;
+          transform: translateZ(0);
+        }
+
+        .stack-track:hover {
+          animation-play-state: paused;
+        }
+
+        .stack-group {
+          display: flex;
+          align-items: center;
+          flex-shrink: 0;
+        }
+
+        .stack-logo-slot {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 48px;
+          height: 48px;
+          flex-shrink: 0;
+          margin: 0 2rem;
+        }
+
+        .stack-logo {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          opacity: 0.7;
+          transition: opacity 0.25s ease, transform 0.25s ease;
+          display: block;
+        }
+
+        .stack-logo:hover {
+          opacity: 1;
+          transform: scale(1.1);
+        }
+
+        @keyframes stack-scroll {
+          from { transform: translate3d(0, 0, 0); }
+          to   { transform: translate3d(-50%, 0, 0); }
+        }
+
+        @media (max-width: 768px) {
+          .stack-logo-slot { width: 36px; height: 36px; margin: 0 1.25rem; }
+          .stack-track { animation-duration: 50s; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          .stack-track { animation: none !important; }
+        }
+      `}</style>
+    </section>
+  );
+};
 /* =========================================================
    INDUSTRIES — replaces testimonials & pricing
 ========================================================= */
