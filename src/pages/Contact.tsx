@@ -9,6 +9,7 @@ import {
   Clock,
   Sparkles,
   Send,
+  ShieldCheck,
   MessageCircle,
   Instagram,
   Linkedin,
@@ -16,6 +17,8 @@ import {
   Facebook,
   Check,
   IndianRupee,
+  Reply,
+  Fingerprint,
 } from "lucide-react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -40,9 +43,9 @@ const services = [
 const budgets = ["< 3K", "5K – 10K", "10K – 20K", "20K+"];
 
 const reasons = [
-  { icon: Sparkles, title: "Reply within 24h", desc: "Real humans, not bots." },
+  { icon: MessageCircle, title: "Reply within 24h", desc: "Real humans, not bots." },
   { icon: Check, title: "Free discovery call", desc: "30-min strategy session." },
-  { icon: MessageCircle, title: "NDA on request", desc: "Your idea stays yours." },
+  { icon: ShieldCheck, title: "NDA on request", desc: "Your idea stays yours." },
 ];
 
 const ContactPage = () => {
@@ -339,9 +342,9 @@ const ContactPage = () => {
                 <div className="absolute -top-10 -right-10 w-40 h-40 bg-dexon-yellow/20 rounded-full blur-3xl" />
                 <h3 className="text-xl font-black mb-6 relative">Reach us directly</h3>
                 <div className="space-y-5 relative">
-                  <ContactRow icon={Mail} label="Email" value="example@gmail.com" href="mailto:example@gmail.com" />
-                  <ContactRow icon={Phone} label="WhatsApp / Call" value="+91 85098 51562" href="tel:+918509851562" />
-                  <ContactRow icon={Phone} label="Call" value="+91 89678 21570" href="tel:+918967821570" />
+                  <ContactRow icon={Mail} label="Email" value="info@weborixtechnologies.in" href="mailto:info@weborixtechnologies.in" />
+                  <ContactRow icon={Phone} label="WhatsApp / Call" value="+91 8282867326" href="tel:+918282867326" />
+                  <ContactRow icon={Phone} label="Call" value="+91 8900074438" href="tel:+918900074438" />
                   <ContactRow icon={MapPin} label="Studio" value="Kolkata, WB, India" />
                   <ContactRow icon={Clock} label="Working hours" value="Mon – Sat · 10am – 7pm IST" />
                 </div>
