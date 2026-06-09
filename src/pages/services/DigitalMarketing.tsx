@@ -510,22 +510,25 @@ const Tools = () => {
         title={tool.name}
         loading="lazy"
         className="tools-logo"
-        onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+        onError={(e) => {
+          (e.currentTarget as HTMLImageElement).style.display = "none";
+        }}
       />
     </div>
   ));
 
   return (
-    <section className="py-16 sm:py-20 bg-background overflow-hidden">
+    <section className="py-16 sm:py-20 bg-background">
       <div className="max-w-7xl mx-auto px-4">
         <p className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-12">
           Channels &amp; Tools We Live In
         </p>
-        <div className="tools-marquee-viewport">
-          <div className="tools-marquee-track">
-            <div className="tools-marquee-group">{logos}</div>
-            <div className="tools-marquee-group" aria-hidden="true">{logos}</div>
-          </div>
+      </div>
+
+      <div className="tools-marquee-viewport">
+        <div className="tools-marquee-track">
+          <div className="tools-marquee-group">{logos}</div>
+          <div className="tools-marquee-group" aria-hidden="true">{logos}</div>
         </div>
       </div>
 
@@ -533,12 +536,22 @@ const Tools = () => {
         .tools-marquee-viewport {
           overflow: hidden;
           width: 100%;
-          -webkit-mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
-          mask-image: linear-gradient(to right, transparent 0%, black 10%, black 90%, transparent 100%);
+          -webkit-mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%
+          );
+          mask-image: linear-gradient(
+            to right,
+            transparent 0%,
+            black 10%,
+            black 90%,
+            transparent 100%
+          );
         }
 
-        /* The track holds BOTH groups. We animate it by -50% of its own width,
-           which equals exactly one full group width — the seamless reset point. */
         .tools-marquee-track {
           display: flex;
           align-items: center;
@@ -560,49 +573,56 @@ const Tools = () => {
           flex-shrink: 0;
         }
 
-        /* Fixed-size wrapper slots eliminate all width jitter */
         .tools-logo-slot {
           display: flex;
           align-items: center;
           justify-content: center;
-          width: 48px;
-          height: 48px;
+          width: 44px;
+          height: 44px;
           flex-shrink: 0;
-          margin: 0 2rem;
+          margin: 0 2.25rem;
         }
 
         .tools-logo {
           width: 100%;
           height: 100%;
           object-fit: contain;
-          opacity: 0.7;
-          transition: opacity 0.25s ease, transform 0.25s ease;
           display: block;
+          opacity: 0.75;
+          transition: opacity 0.3s ease, transform 0.3s ease;
         }
 
         .tools-logo:hover {
           opacity: 1;
-          transform: scale(1.1);
+          transform: scale(1.12);
         }
 
-        /* -50% of total track = exactly one group width → zero-visible reset */
         @keyframes tools-scroll {
           from { transform: translate3d(0, 0, 0); }
           to   { transform: translate3d(-50%, 0, 0); }
         }
 
         @media (max-width: 768px) {
-          .tools-logo-slot { width: 36px; height: 36px; margin: 0 1.25rem; }
-          .tools-marquee-track { animation-duration: 50s; }
+          .tools-logo-slot {
+            width: 34px;
+            height: 34px;
+            margin: 0 1.5rem;
+          }
+          .tools-marquee-track {
+            animation-duration: 50s;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {
-          .tools-marquee-track { animation: none !important; }
+          .tools-marquee-track {
+            animation: none !important;
+          }
         }
       `}</style>
     </section>
   );
 };
+
 /* =========================================================
    FAQ
 ========================================================= */
