@@ -11,6 +11,10 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CtaSection from "@/components/CtaSection";
 import gfxHero from "@/assets/gfx-hero.png";
+import gfxOfferBrand from "@/assets/gfx-offer-brand.png";
+import gfxOfferUiux from "@/assets/gfx-offer-uiux.png";
+import gfxOfferPackaging from "@/assets/gfx-offer-packaging.png";
+import gfxOfferSocial from "@/assets/gfx-offer-social.png";
 
 /* =========================================================
    HERO — bento style
@@ -135,110 +139,143 @@ const Offer = () => (
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-6 gap-5">
+
         {/* Branding - large */}
-        <div className="md:col-span-4 group relative rounded-[32px] bg-[#f5e7a8]/60 border border-black/5 p-7 sm:p-9 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[340px] flex flex-col justify-between">
-          <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-[#e3c85d]/40 blur-3xl rounded-full" />
-          <div className="relative z-10 max-w-sm">
+        <div className="md:col-span-4 group relative rounded-[32px] bg-[#f5e7a8]/60 border border-black/5 p-7 sm:p-9 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[220px] flex flex-col justify-between">
+          <div className="absolute -bottom-24 -right-24 w-72 h-72 bg-[#e3c85d]/40 blur-3xl rounded-full pointer-events-none" />
+
+          {/* Text content — capped width so image never overlaps */}
+          <div className="relative z-10 w-full sm:max-w-[55%]">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4">
               <Sparkles className="w-3.5 h-3.5" /> Brand identity
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-[1.05] text-foreground">Logos & full identity systems that scale.</h3>
-            <p className="mt-3 text-sm text-foreground/60">Logo, type, colour, voice and a brand book — built to last for years, not trends.</p>
+            <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-[1.05] text-foreground">
+              Logos & full identity systems that scale.
+            </h3>
+            <p className="mt-3 text-sm text-foreground/60">
+              Logo, type, colour, voice and a brand book — built to last for years, not trends.
+            </p>
             <div className="mt-5 flex flex-wrap gap-2">
               {["Logo", "Brand book", "Typography", "Voice"].map(t => (
                 <span key={t} className="px-3 py-1 rounded-full bg-white/70 backdrop-blur text-xs font-semibold text-foreground/70">{t}</span>
               ))}
             </div>
           </div>
-          {/* decorative logo collage */}
-          <div className="absolute right-6 bottom-6 hidden sm:flex items-end gap-3 pointer-events-none">
-            <div className="w-24 h-24 rounded-3xl bg-white shadow-xl flex items-center justify-center text-3xl font-black text-[#9f8422] rotate-[-6deg]">Aa</div>
-            <div className="w-20 h-20 rounded-2xl bg-[#111] shadow-xl flex items-center justify-center text-2xl font-black text-[#e3c85d] rotate-[4deg]">D.</div>
-            <div className="w-16 h-16 rounded-full bg-dexon-cyan shadow-xl flex items-center justify-center rotate-[10deg]"><Sparkles className="w-7 h-7" /></div>
+
+          {/* Image — hidden on mobile, constrained container on sm+ */}
+          <div className="hidden sm:flex absolute right-0 bottom-0 w-[42%] max-w-[280px] h-full items-end pointer-events-none pr-3">
+            <img
+              src={gfxOfferBrand}
+              alt="Brand identity kit with business cards and brand book"
+              loading="lazy"
+              className="w-full max-h-[88%] object-contain object-bottom drop-shadow-2xl"
+            />
           </div>
         </div>
 
         {/* UI/UX */}
-        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-cyan/30 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[340px] flex flex-col justify-between">
+        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-cyan/30 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[220px] flex flex-col">
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4">
               <Layout className="w-3.5 h-3.5" /> UI / UX
             </div>
-            <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">Interfaces people enjoy using.</h3>
+            <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">
+              Interfaces people enjoy using.
+            </h3>
             <p className="mt-2 text-sm text-foreground/60">Web & mobile design in Figma, ready for dev.</p>
           </div>
-          <div className="mt-4 grid grid-cols-3 gap-2">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className={`aspect-square rounded-xl ${i % 3 === 0 ? "bg-white" : i % 3 === 1 ? "bg-foreground/80" : "bg-dexon-yellow"} shadow-sm`} />
-            ))}
+          {/* Image in normal flow — no overlap risk */}
+          <div className="flex-1 flex items-end justify-center pt-4 min-h-[80px]">
+            <img
+              src={gfxOfferUiux}
+              alt="UI UX design on laptop and mobile"
+              loading="lazy"
+              className="w-[160px] sm:w-[190px] max-h-[120px] object-contain object-bottom drop-shadow-xl"
+            />
           </div>
         </div>
 
         {/* Packaging */}
-        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-green/30 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[340px] flex flex-col justify-between">
+        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-green/30 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[220px] flex flex-col">
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4">
               <Package className="w-3.5 h-3.5" /> Packaging
             </div>
-            <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">Print & packaging that pop.</h3>
+            <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">
+              Print & packaging that pop.
+            </h3>
             <p className="mt-2 text-sm text-foreground/60">Boxes, labels, brochures, cards — print-ready files.</p>
           </div>
-          <div className="mt-4 flex items-end gap-2 h-24 justify-center">
-            <div className="w-14 h-20 rounded-md bg-white shadow-lg rotate-[-6deg] border border-black/5" />
-            <div className="w-16 h-24 rounded-md bg-[#111] shadow-lg" />
-            <div className="w-14 h-16 rounded-md bg-dexon-yellow shadow-lg rotate-[8deg]" />
+          {/* Image in normal flow — no overlap risk */}
+          <div className="flex-1 flex items-end justify-center pt-4 min-h-[80px]">
+            <img
+              src={gfxOfferPackaging}
+              alt="Product packaging design mockups"
+              loading="lazy"
+              className="w-[160px] sm:w-[190px] max-h-[120px] object-contain object-bottom drop-shadow-xl"
+            />
           </div>
         </div>
 
         {/* Social creatives - large */}
-        <div className="md:col-span-4 group relative rounded-[32px] bg-[#ece9e4] border border-black/5 p-7 sm:p-9 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[340px] flex flex-col justify-between">
-          <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#e3c85d]/20 blur-3xl rounded-full" />
-          <div className="relative z-10 max-w-sm">
+        <div className="md:col-span-4 group relative rounded-[32px] bg-[#ece9e4] border border-black/5 p-7 sm:p-9 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[220px] flex flex-col justify-between">
+          <div className="absolute -top-20 -left-20 w-72 h-72 bg-[#e3c85d]/20 blur-3xl rounded-full pointer-events-none" />
+
+          {/* Text content — capped width so image never overlaps */}
+          <div className="relative z-10 w-full sm:max-w-[55%]">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4">
               <ImageIcon className="w-3.5 h-3.5" /> Social creatives
             </div>
-            <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-[1.05] text-foreground">Scroll-stopping content for every feed.</h3>
-            <p className="mt-3 text-sm text-foreground/60">Reels covers, story templates, carousels & ad creatives that match your brand pitch-perfect.</p>
+            <h3 className="text-2xl sm:text-3xl font-black tracking-tight leading-[1.05] text-foreground">
+              Scroll-stopping content for every feed.
+            </h3>
+            <p className="mt-3 text-sm text-foreground/60">
+              Reels covers, story templates, carousels & ad creatives that match your brand pitch-perfect.
+            </p>
             <div className="mt-5 grid grid-cols-3 gap-3 max-w-xs">
               <div><div className="text-2xl font-black">IG</div><div className="text-[11px] text-foreground/55 font-semibold">Templates</div></div>
               <div><div className="text-2xl font-black">TT</div><div className="text-[11px] text-foreground/55 font-semibold">Covers</div></div>
               <div><div className="text-2xl font-black">YT</div><div className="text-[11px] text-foreground/55 font-semibold">Thumbnails</div></div>
             </div>
           </div>
-          {/* mock phones */}
-          <div className="absolute right-6 bottom-6 hidden sm:flex items-end gap-3 pointer-events-none">
-            <div className="w-24 h-40 rounded-2xl bg-white shadow-xl border-4 border-black overflow-hidden rotate-[-6deg]">
-              <div className="h-1/2 bg-dexon-yellow" />
-              <div className="h-1/2 bg-[#111]" />
-            </div>
-            <div className="w-24 h-40 rounded-2xl bg-white shadow-xl border-4 border-black overflow-hidden rotate-[6deg]">
-              <div className="h-2/3 bg-dexon-cyan" />
-              <div className="h-1/3 bg-white" />
-            </div>
+
+          {/* Image — hidden on mobile, constrained container on sm+ */}
+          <div className="hidden sm:flex absolute right-0 bottom-0 w-[42%] max-w-[260px] h-full items-end pointer-events-none pr-3">
+            <img
+              src={gfxOfferSocial}
+              alt="Social media creatives on phones"
+              loading="lazy"
+              className="w-full max-h-[88%] object-contain object-bottom drop-shadow-2xl"
+            />
           </div>
         </div>
 
         {/* Illustration */}
-        <div className="md:col-span-3 group relative rounded-[32px] bg-background border border-border p-7 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-500 min-h-[220px] flex items-start gap-5">
-          <div className="w-14 h-14 shrink-0 rounded-2xl bg-dexon-yellow/50 flex items-center justify-center">
-            <PenTool className="w-7 h-7" />
+        <div className="md:col-span-3 group relative rounded-[32px] bg-background border border-border p-6 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-500 flex items-start gap-4">
+          <div className="w-12 h-12 shrink-0 rounded-2xl bg-dexon-yellow/50 flex items-center justify-center">
+            <PenTool className="w-6 h-6" />
           </div>
           <div>
             <h3 className="text-xl font-black tracking-tight">Illustration & Icons</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Custom illustrations, icon sets & mascots that give your brand a personality competitors can't copy.</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Custom illustrations, icon sets & mascots that give your brand a personality competitors can't copy.
+            </p>
           </div>
         </div>
 
         {/* Motion */}
-        <div className="md:col-span-3 group relative rounded-[32px] bg-background border border-border p-7 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-500 min-h-[220px] flex items-start gap-5">
-          <div className="w-14 h-14 shrink-0 rounded-2xl bg-dexon-cyan/50 flex items-center justify-center">
-            <Video className="w-7 h-7" />
+        <div className="md:col-span-3 group relative rounded-[32px] bg-background border border-border p-6 overflow-hidden hover:-translate-y-1 hover:shadow-xl transition-all duration-500 flex items-start gap-4">
+          <div className="w-12 h-12 shrink-0 rounded-2xl bg-dexon-cyan/50 flex items-center justify-center">
+            <Video className="w-6 h-6" />
           </div>
           <div>
             <h3 className="text-xl font-black tracking-tight">Motion Graphics</h3>
-            <p className="mt-2 text-sm text-muted-foreground">Animated logos, explainers & short-form motion for ads, product pages and social — built in After Effects & Lottie.</p>
+            <p className="mt-2 text-sm text-muted-foreground">
+              Animated logos, explainers & short-form motion for ads, product pages and social — built in After Effects & Lottie.
+            </p>
           </div>
         </div>
+
       </div>
     </div>
   </section>
@@ -355,7 +392,7 @@ const Deliverables = () => (
   <section className="py-16 sm:py-20 lg:py-24 bg-card">
     <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
       <div className="grid lg:grid-cols-3 gap-5">
-        <div className="lg:col-span-1 relative rounded-3xl bg-[#ece9e4] p-7 sm:p-8 border border-black/5 overflow-hidden flex flex-col justify-between min-h-[340px]">
+        <div className="lg:col-span-1 relative rounded-3xl bg-[#ece9e4] p-7 sm:p-8 border border-black/5 overflow-hidden flex flex-col justify-between min-h-[260px]">
           <div className="absolute -bottom-16 -left-16 w-56 h-56 bg-[#e3c85d]/30 blur-3xl rounded-full" />
           <div className="relative z-10">
             <p className="text-[11px] font-bold uppercase tracking-[0.22em] text-black/50 mb-3">What you walk away with</p>
@@ -449,142 +486,40 @@ const Process = () => (
 ========================================================= */
 const toolLogos = [
   { name: "Figma", slug: "figma" },
+  { name: "Photoshop", slug: "adobephotoshop" },
+  { name: "Illustrator", slug: "adobeillustrator" },
+  { name: "InDesign", slug: "adobeindesign" },
+  { name: "After Effects", slug: "adobeaftereffects" },
+  { name: "Premiere Pro", slug: "adobepremierepro" },
+  { name: "Procreate", slug: "procreate" },
   { name: "Blender", slug: "blender" },
-  { name: "Sketch", slug: "sketch" },
-  { name: "CorelDRAW", slug: "coreldraw" },
-  { name: "Krita", slug: "krita" },
-  { name: "Inkscape", slug: "inkscape" },
-  { name: "GIMP", slug: "gimp" },
-  { name: "Miro", slug: "miro" },
-  { name: "Behance", slug: "behance" },
-  { name: "Dribbble", slug: "dribbble" },
-  { name: "Freepik", slug: "freepik" },
-  { name: "Unsplash", slug: "unsplash" },
-  { name: "Pexels", slug: "pexels" },
-  { name: "Envato", slug: "envato" },
-  { name: "LottieFiles", slug: "lottiefiles" },
+  { name: "Framer", slug: "framer" },
+  { name: "Canva", slug: "canva" },
+  { name: "Lottie", slug: "lottiefiles" },
+  { name: "Webflow", slug: "webflow" },
 ];
-const Tools = () => {
-  const logos = toolLogos.map((l) => (
-    <div key={l.slug} className="tools-logo-slot">
-      <img
-        src={`https://cdn.simpleicons.org/${l.slug}`}
-        alt={l.name}
-        title={l.name}
-        loading="lazy"
-        className="tools-logo-img"
-        onError={(e) => {
-          (e.currentTarget as HTMLImageElement).style.display = "none";
-        }}
-      />
+const Tools = () => (
+  <section className="py-16 sm:py-20 bg-background">
+    <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
+      <p className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-10">
+        Tools we love
+      </p>
+      <div className="grid grid-cols-3 sm:grid-cols-4 md:grid-cols-6 gap-x-10 gap-y-10 items-center justify-items-center">
+        {toolLogos.map((l) => (
+          <img
+            key={l.slug}
+            src={`https://cdn.simpleicons.org/${l.slug}/111111`}
+            alt={l.name}
+            title={l.name}
+            loading="lazy"
+            className="h-8 sm:h-9 w-auto opacity-60 hover:opacity-100 hover:scale-110 transition-all duration-300"
+            onError={(e) => { (e.currentTarget as HTMLImageElement).style.display = "none"; }}
+          />
+        ))}
+      </div>
     </div>
-  ));
-
-  return (
-    <section className="py-16 sm:py-20 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 max-w-7xl">
-        <p className="text-center text-[11px] font-bold uppercase tracking-[0.25em] text-muted-foreground mb-10">
-          Tools we love
-        </p>
-      </div>
-
-      <div className="tools-viewport">
-        <div className="tools-track">
-          <div className="tools-group">{logos}</div>
-          <div className="tools-group" aria-hidden="true">{logos}</div>
-        </div>
-      </div>
-
-      <style>{`
-        .tools-viewport {
-          overflow: hidden;
-          width: 100%;
-          -webkit-mask-image: linear-gradient(
-            to right,
-            transparent 0%,
-            black 10%,
-            black 90%,
-            transparent 100%
-          );
-          mask-image: linear-gradient(
-            to right,
-            transparent 0%,
-            black 10%,
-            black 90%,
-            transparent 100%
-          );
-        }
-
-        .tools-track {
-          display: flex;
-          align-items: center;
-          width: max-content;
-          will-change: transform;
-          backface-visibility: hidden;
-          -webkit-backface-visibility: hidden;
-          animation: tools-scroll 70s linear infinite;
-          transform: translateZ(0);
-        }
-
-        .tools-track:hover {
-          animation-play-state: paused;
-        }
-
-        .tools-group {
-          display: flex;
-          align-items: center;
-          flex-shrink: 0;
-        }
-
-        .tools-logo-slot {
-          display: flex;
-          align-items: center;
-          justify-content: center;
-          width: 44px;
-          height: 44px;
-          flex-shrink: 0;
-          margin: 0 2.25rem;
-        }
-
-        .tools-logo-img {
-          width: 100%;
-          height: 100%;
-          object-fit: contain;
-          display: block;
-          opacity: 0.75;
-          transition: opacity 0.3s ease, transform 0.3s ease;
-        }
-
-        .tools-logo-img:hover {
-          opacity: 1;
-          transform: scale(1.12);
-        }
-
-        @keyframes tools-scroll {
-          from { transform: translate3d(0, 0, 0); }
-          to   { transform: translate3d(-50%, 0, 0); }
-        }
-
-        @media (max-width: 768px) {
-          .tools-logo-slot {
-            width: 34px;
-            height: 34px;
-            margin: 0 1.5rem;
-          }
-          .tools-track {
-            animation-duration: 50s;
-          }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-          .tools-track {
-            animation: none !important;
-          }
-        }
-      `}</style>
-    </section>
-  );
-};
+  </section>
+);
 
 /* =========================================================
    INDUSTRIES

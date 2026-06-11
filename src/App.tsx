@@ -13,6 +13,7 @@ import GraphicsDesign from "./pages/services/GraphicsDesign.tsx";
 import Contact from "./pages/Contact.tsx";
 import Portfolio from "./pages/Portfolio.tsx";
 import About from "./pages/About.tsx";
+import Careers from "./pages/Careers.tsx";
 import TermsOfUse from "./pages/TermsOfUse.tsx";
 import PrivacyPolicy from "./pages/PrivacyPolicy.tsx";
 
@@ -50,6 +51,7 @@ const App = () => (
           <Route path="/contact" element={<Contact />} />
           <Route path="/portfolio" element={<Portfolio />} />
           <Route path="/about" element={<About />} />
+          <Route path="/careers" element={<Careers />} />
           <Route path="/terms-of-use" element={<TermsOfUse />} />
           <Route path="/privacy-policy" element={<PrivacyPolicy />} />
 
