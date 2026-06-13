@@ -144,17 +144,16 @@ const Hero = () => (
               </h3>
             </div>
 
-            <motion.img
-              src={heroMockup}
-              alt="Website Preview"
-              className="relative z-10 w-full max-w-[240px] sm:max-w-[280px] mx-auto mt-6 lg:mt-auto drop-shadow-[0_30px_60px_rgba(0,0,0,0.15)]"
-              animate={{ y: [0, -8, 0] }}
-              transition={{
-                duration: 4,
-                repeat: Infinity,
-                ease: "easeInOut",
-              }}
-            />
+<motion.img
+  src={heroMockup}
+  alt="Website Preview"
+className="relative z-10 w-full max-w-[420px] sm:max-w-[500px] mx-auto mt-6 lg:mt-auto -mb-4 drop-shadow-[0_30px_60px_rgba(0,0,0,0.15)]"  animate={{ y: [0, -8, 0] }}
+  transition={{
+    duration: 4,
+    repeat: Infinity,
+    ease: "easeInOut",
+  }}
+/>
           </div>
 
           {/* CTA Card */}
@@ -244,22 +243,25 @@ const Offer = () => (
         </div>
 
         {/* E-commerce - tall */}
-        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-cyan/30 border border-black/5 p-7 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[280px] flex flex-col gap-4">
+        <div className="md:col-span-2 group relative rounded-[32px] bg-dexon-cyan/30 border border-black/5 p-7 pb-0 overflow-hidden hover:-translate-y-1 transition-all duration-500 min-h-[280px] flex flex-col gap-4">
           <div className="relative z-10">
             <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white/70 backdrop-blur text-[10px] font-bold uppercase tracking-widest text-foreground/70 mb-4 w-fit">
               <ShoppingBag className="w-3.5 h-3.5" /> E-commerce
             </div>
-            <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">Stores that actually convert.</h3>
-            <p className="mt-2 text-sm text-foreground/60">Shopify, WooCommerce or fully custom checkouts.</p>
+            <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">
+              Stores that actually convert.
+            </h3>
+            <p className="mt-2 text-sm text-foreground/60">
+              Shopify, WooCommerce or fully custom checkouts.
+            </p>
           </div>
+
           <div className="flex-1 flex items-end justify-center">
             <img
               src={ecommerceImg}
               alt="E-commerce store illustration"
               loading="lazy"
-              width={1024}
-              height={1024}
-              className="w-full max-w-[180px] sm:max-w-[200px] drop-shadow-xl object-contain"
+              className="w-full h-full object-cover"
             />
           </div>
         </div>
@@ -273,16 +275,16 @@ const Offer = () => (
             <h3 className="text-xl sm:text-2xl font-black tracking-tight leading-tight text-foreground">SaaS & internal tools.</h3>
             <p className="mt-2 text-sm text-foreground/60">Dashboards, portals & APIs in React + Next.</p>
           </div>
-          <div className="flex-1 flex items-end justify-center">
-            <img
-              src={saasImg}
-              alt="SaaS dashboard illustration"
-              loading="lazy"
-              width={1024}
-              height={1024}
-              className="w-full max-w-[200px] sm:max-w-[220px] drop-shadow-xl object-contain"
-            />
-          </div>
+  <div className="flex-1 flex items-end justify-center">
+  <img
+    src={saasImg}
+    alt="SaaS dashboard illustration"
+    loading="lazy"
+    width={1024}
+    height={1024}
+    className="w-full max-w-[320px] sm:max-w-[420px] lg:max-w-[520px] drop-shadow-xl object-contain -mb-4"
+  />
+</div>
         </div>
 
         {/* Mobile-first - large with image right */}
@@ -489,16 +491,16 @@ const Process = () => (
             A repeatable four-step path we've refined across 180+ launches. Predictable timelines, no last-minute surprises.
           </p>
         </div>
-        <div className="lg:col-span-2 flex justify-center">
-          <img
-            src={processImg}
-            alt="Layered website wireframes illustrating the design process"
-            loading="lazy"
-            width={1024}
-            height={1024}
-            className="w-full max-w-[360px]"
-          />
-        </div>
+<div className="lg:col-span-2 flex justify-center">
+  <img
+    src={processImg}
+    alt="Layered website wireframes illustrating the design process"
+    loading="lazy"
+    width={1024}
+    height={1024}
+    className="w-full max-w-[220px] sm:max-w-[260px]"
+  />
+</div>
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5">
