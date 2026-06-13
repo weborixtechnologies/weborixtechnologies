@@ -105,6 +105,15 @@ const Footer = () => {
 
               <li>
                 <Link
+                  to="/careers"
+                  className="hover:text-dexon-yellow transition-colors"
+                >
+                  Careers
+                </Link>
+              </li>
+
+              <li>
+                <Link
                   to="/services/digital-marketing"
                   className="hover:text-dexon-yellow transition-colors"
                 >
