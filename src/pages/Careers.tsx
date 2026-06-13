@@ -3,6 +3,13 @@ import {
 ArrowUpRight,Briefcase,MapPin,Clock,Users,Heart,Rocket,Coffee,GraduationCap,Sparkles,CheckCircle2,Send,Upload,X,Globe,Trophy,Building2,Quote,ChevronDown,Plus,Star,Zap,Shield,Smile,Target,
 } from "lucide-react";
 import { toast } from "sonner";
+import { useRef } from "react";
+import Autoplay from "embla-carousel-autoplay";
+import {
+  Carousel,
+  CarouselContent,
+  CarouselItem,
+} from "@/components/ui/carousel";
 
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -28,6 +35,8 @@ import gBrand from "@/assets/gfx-offer-brand.png";
 import gUiux from "@/assets/gfx-offer-uiux.png";
 import gPack from "@/assets/gfx-offer-packaging.png";
 import Whyjoin from "@/assets/whyJoin.png";
+import saasImg from "@/assets/webdev-saas.png";
+
 
 /* -------------------------------------------------------------------------- */
 /*                       SINGLE SOURCE OF TRUTH (JSON)                         */
@@ -41,7 +50,7 @@ type IconName = keyof typeof iconMap;
 
 const careersData = {
   hero: {
-    badge: "We're hiring · 6 open roles",
+    badge: "We're Hiring · Be Part of It",
     title: "Build the work you'd proudly put in your portfolio.",
     description:
       "Weborix is a tight crew of designers, developers and marketers shipping products and brands for founders worldwide. Join us if you care about the craft.",
@@ -96,12 +105,7 @@ const careersData = {
   ]
 },
 
-  companyStats: {
-    employees: { value: "48+", label: "Teammates worldwide" },
-    projectsCompleted: { value: "320+", label: "Projects shipped" },
-    clientsServed: { value: "180+", label: "Happy clients" },
-    countriesServed: { value: "18", label: "Countries served" },
-  },
+
 
   departments: [
     { id: "all", name: "All roles" },
@@ -465,37 +469,6 @@ const renderHero = () => {
   );
 };
 
-const renderStats = () => {
-  const s = careersData.companyStats;
-  const items = [
-    { ...s.employees, icon: "Users" as IconName },
-    { ...s.projectsCompleted, icon: "Trophy" as IconName },
-    { ...s.clientsServed, icon: "Smile" as IconName },
-    { ...s.countriesServed, icon: "Globe" as IconName },
-  ];
-  return (
-    <section className="py-10 sm:py-14 bg-background">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-5">
-          {items.map((it) => (
-            <div
-              key={it.label}
-              className="rounded-3xl bg-card border border-border p-5 sm:p-6 flex items-center gap-4 hover:shadow-lg transition-shadow"
-            >
-              <div className="w-11 h-11 sm:w-12 sm:h-12 shrink-0 rounded-2xl bg-dexon-yellow/60 flex items-center justify-center">
-                <Icon name={it.icon} className="w-5 h-5" />
-              </div>
-              <div className="min-w-0">
-                <div className="text-2xl sm:text-3xl font-black leading-none">{it.value}</div>
-                <div className="text-[11px] sm:text-xs text-muted-foreground mt-1">{it.label}</div>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-};
 
 const renderCompanyOverview = () => {
   const c = careersData.companyOverview;
@@ -616,20 +589,20 @@ const JobCard = ({
   onView: (j: Job) => void;
   onApply: (j: Job) => void;
 }) => (
-  <article className="group relative rounded-3xl bg-card border border-border p-6 sm:p-7 hover:shadow-xl hover:-translate-y-1 transition-all overflow-hidden flex flex-col">
+  <article className="relative rounded-3xl bg-card border border-border p-6 sm:p-7 overflow-hidden flex flex-col">
     <div className="absolute -top-6 -right-6 w-40 h-40 bg-dexon-yellow/20 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity" />
 
     <div className="relative flex items-start gap-4 sm:gap-5">
-      <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-muted/60 flex items-center justify-center overflow-hidden">
-        <img
-          src={job.image}
-          alt={job.title}
-          loading="lazy"
-          width={256}
-          height={256}
-          className="w-full h-full object-contain p-1 group-hover:scale-110 transition-transform duration-500"
-        />
-      </div>
+    <div className="shrink-0 w-20 h-20 sm:w-24 sm:h-24 flex items-center justify-center overflow-hidden">
+      <img
+        src={job.image}
+        alt={job.title}
+        loading="lazy"
+        width={256}
+        height={256}
+        className="w-16 h-16 sm:w-20 sm:h-20 object-contain"
+      />
+    </div>
       <div className="flex-1 min-w-0">
         <div className="flex items-center gap-2 text-[11px] font-medium text-muted-foreground mb-1.5">
           <Clock className="w-3 h-3" />
@@ -768,26 +741,63 @@ const renderLife = () => {
 const renderHiring = () => {
   const h = careersData.hiringProcess;
   return (
-    <section className="py-16 sm:py-20 lg:py-24">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="max-w-2xl mb-12">
-          <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Hiring process</p>
-          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">{h.title}</h2>
-          <p className="mt-4 text-base sm:text-lg text-muted-foreground">{h.description}</p>
+<section className="py-16 sm:py-20 lg:py-24">
+  <div className="max-w-[1800px] mx-auto px-4 sm:px-6 lg:px-10">
+    <div className="max-w-2xl mb-14">
+      <p className="text-sm font-semibold uppercase tracking-[0.25em] text-muted-foreground">
+        Hiring process
+      </p>
+
+      <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
+        {h.title}
+      </h2>
+
+      <p className="mt-4 text-base sm:text-lg text-muted-foreground leading-relaxed">
+        {h.description}
+      </p>
+    </div>
+
+    <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-5">
+      {h.steps.map((s, i) => (
+        <div
+          key={s.title}
+          className="
+            group relative overflow-hidden
+            rounded-[32px]
+            border border-border
+            bg-gradient-to-br from-background via-background to-muted/40
+            p-8
+            shadow-sm
+            hover:-translate-y-2
+            hover:border-black/15
+            hover:shadow-xl
+            transition-all duration-500
+          "
+        >
+          {/* Background Number */}
+        <div className="absolute top-0 right-2 text-[75px] lg:text-[90px] font-black leading-none text-black/[0.04] select-none pointer-events-none">
+          {String(i + 1).padStart(2, "0")}
         </div>
-        <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
-          {h.steps.map((s, i) => (
-            <div key={s.title} className="relative rounded-3xl bg-card border border-border p-5 hover:shadow-lg transition-shadow">
-              <div className="w-10 h-10 rounded-2xl bg-dexon-yellow flex items-center justify-center font-black text-sm mb-4">
-                {String(i + 1).padStart(2, "0")}
-              </div>
-              <h3 className="font-bold text-base mb-1.5">{s.title}</h3>
-              <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{s.description}</p>
-            </div>
-          ))}
+
+          {/* Timeline Connector */}
+          {i !== h.steps.length - 1 && (
+            <div className="hidden lg:block absolute top-16 left-full w-5 h-px bg-border" />
+          )}
+
+          <div className="relative z-10">
+            <h3 className="text-[28px] lg:text-[32px] font-black tracking-tight leading-none mb-5">
+              {s.title}
+            </h3>
+
+            <p className="text-[15px] leading-8 text-muted-foreground">
+              {s.description}
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      ))}
+    </div>
+  </div>
+</section>
   );
 };
 
@@ -813,39 +823,99 @@ const renderEmployeeBenefits = () => {
   );
 };
 
-const renderTestimonials = () => (
-  <section className="py-16 sm:py-20 lg:py-24">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="max-w-2xl mb-12">
-        <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">Team voices</p>
-        <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
-          What the team says, unfiltered.
-        </h2>
-      </div>
-      <div className="grid md:grid-cols-3 gap-4 sm:gap-5">
-        {careersData.testimonials.map((t) => (
-          <div key={t.name} className="rounded-3xl bg-card border border-border p-6 sm:p-7 flex flex-col hover:shadow-xl transition-shadow">
-            <Quote className="w-7 h-7 text-dexon-yellow mb-4" />
-            <p className="text-sm sm:text-base text-foreground leading-relaxed flex-1">"{t.quote}"</p>
-            <div className="mt-6 pt-5 border-t border-border flex items-center gap-3">
-              <img
-                src={t.image}
-                alt={t.name}
-                loading="lazy"
-                width={64}
-                height={64}
-                className="w-12 h-12 rounded-full object-cover bg-muted"
-              />
-              <div>
-                <div className="font-bold text-sm">{t.name}</div>
-                <div className="text-xs text-muted-foreground">{t.designation}</div>
+
+const renderTestimonials = (autoplay: React.RefObject<any>) => (
+<section className="py-16 sm:py-20 lg:py-24">
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="max-w-2xl mb-12">
+      <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+        Team voices
+      </p>
+
+      <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
+        What the team says, unfiltered.
+      </h2>
+    </div>
+
+    {/* Mobile Carousel */}
+    <div className="md:hidden">
+      <Carousel
+        opts={{
+          align: "start",
+          loop: true,
+        }}
+        plugins={autoplay.current ? [autoplay.current] : []}
+        className="w-full"
+      >
+        <CarouselContent>
+          {careersData.testimonials.map((t) => (
+            <CarouselItem key={t.name} className="basis-[92%]">
+              <div className="rounded-3xl bg-card border border-border p-6 flex flex-col shadow-sm h-full">
+                <Quote className="w-7 h-7 text-dexon-yellow mb-4" />
+
+                <p className="text-sm text-foreground leading-relaxed flex-1">
+                  "{t.quote}"
+                </p>
+
+                <div className="mt-6 pt-5 border-t border-border flex items-center gap-3">
+                  <img
+                    src={t.image}
+                    alt={t.name}
+                    loading="lazy"
+                    width={64}
+                    height={64}
+                    className="w-12 h-12 rounded-full object-cover bg-muted"
+                  />
+
+                  <div>
+                    <div className="font-bold text-sm">{t.name}</div>
+                    <div className="text-xs text-muted-foreground">
+                      {t.designation}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </CarouselItem>
+          ))}
+        </CarouselContent>
+      </Carousel>
+    </div>
+
+    {/* Desktop Grid */}
+    <div className="hidden md:grid md:grid-cols-3 gap-4 sm:gap-5">
+      {careersData.testimonials.map((t) => (
+        <div
+          key={t.name}
+          className="rounded-3xl bg-card border border-border p-6 sm:p-7 flex flex-col hover:shadow-xl transition-shadow"
+        >
+          <Quote className="w-7 h-7 text-dexon-yellow mb-4" />
+
+          <p className="text-sm sm:text-base text-foreground leading-relaxed flex-1">
+            "{t.quote}"
+          </p>
+
+          <div className="mt-6 pt-5 border-t border-border flex items-center gap-3">
+            <img
+              src={t.image}
+              alt={t.name}
+              loading="lazy"
+              width={64}
+              height={64}
+              className="w-12 h-12 rounded-full object-cover bg-muted"
+            />
+
+            <div>
+              <div className="font-bold text-sm">{t.name}</div>
+              <div className="text-xs text-muted-foreground">
+                {t.designation}
               </div>
             </div>
           </div>
-        ))}
-      </div>
+        </div>
+      ))}
     </div>
-  </section>
+  </div>
+</section>
 );
 
 const renderGallery = () => {
@@ -901,22 +971,40 @@ const FaqItem = ({ q, a }: { q: string; a: string }) => {
 
 const renderFaq = () => (
   <section className="py-16 sm:py-20 lg:py-24">
-    <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-      <div className="grid lg:grid-cols-3 gap-10 lg:gap-16">
-        <div>
-          <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">FAQ</p>
-          <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
-            Questions, asked often.
-          </h2>
-        </div>
-        <div className="lg:col-span-2 space-y-3">
-          {careersData.faq.map((f) => (
-            <FaqItem key={f.question} q={f.question} a={f.answer} />
-          ))}
-        </div>
+  <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+    <div className="grid lg:grid-cols-3 gap-10 lg:gap-16">
+      
+      <div>
+        <p className="text-sm font-semibold uppercase tracking-wider text-muted-foreground">
+          FAQ
+        </p>
+
+        <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">
+          Questions, asked often.
+        </h2>
+
+        <img
+          src={saasImg}
+          alt="FAQ Illustration"
+          loading="lazy"
+          width={1024}
+          height={1024}
+          className="hidden lg:block mt-8 w-full max-w-[300px] object-contain"        />
       </div>
+
+      <div className="lg:col-span-2 space-y-3">
+        {careersData.faq.map((f) => (
+          <FaqItem
+            key={f.question}
+            q={f.question}
+            a={f.answer}
+          />
+        ))}
+      </div>
+
     </div>
-  </section>
+  </div>
+</section>
 );
 
 /* -------------------------------------------------------------------------- */
@@ -1163,6 +1251,13 @@ const JobModal = ({
 /* -------------------------------------------------------------------------- */
 
 const Careers = () => {
+  const autoplay = useRef(
+    Autoplay({
+      delay: 3500,
+      stopOnInteraction: false,
+    })
+  );
+
   const [filter, setFilter] = useState("all");
   const [modalJob, setModalJob] = useState<Job | null>(null);
   const [form, setForm] = useState(initialForm);
@@ -1194,15 +1289,14 @@ const Careers = () => {
         <Header />
 
       {renderHero()}
-      {renderStats()}
       {renderCompanyOverview()}
       {renderWhyJoin()}
       {renderJobs(filter, setFilter, setModalJob, handleApply)}
       {renderLife()}
       {renderHiring()}
       {renderEmployeeBenefits()}
-      {renderTestimonials()}
-      {renderGallery()}
+      {renderTestimonials(autoplay)}
+      {/* {renderGallery()} */}
       {renderFaq()}
       {renderApplicationForm(form, setForm, onSubmit)}
 
