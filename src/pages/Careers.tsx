@@ -7,6 +7,7 @@ import { toast } from "sonner";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import careersHero from "@/assets/careers-hero.png";
+import careersform from "@/assets/careers-form.png";
 import careersCompany from "@/assets/careers-company.png";
 import careersLife from "@/assets/careers-life.png";
 import jobReact from "@/assets/job-react.png";
@@ -372,6 +373,9 @@ const careersData = {
       "Honest feedback on every application",
       "Take-home tasks are paid",
       "Two interview rounds, max",
+      "Regular team bonding activities",
+      "Flexible work environment",
+      "Opportunity to lead initiatives",
     ],
   },
 
@@ -965,13 +969,24 @@ const renderApplicationForm = (
             <p className="text-sm font-semibold uppercase tracking-wider text-primary-foreground/60">Apply</p>
             <h2 className="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight">{g.title}</h2>
             <p className="mt-5 text-base text-primary-foreground/70 leading-relaxed max-w-md">{g.description}</p>
-            <ul className="mt-8 space-y-3">
-              {g.perks.map((p) => (
-                <li key={p} className="flex items-center gap-3 text-sm text-primary-foreground/80">
-                  <CheckCircle2 className="w-4 h-4 text-dexon-yellow shrink-0" /> {p}
-                </li>
-              ))}
-            </ul>
+<ul className="mt-8 space-y-3">
+  {g.perks.map((p) => (
+    <li key={p} className="flex items-center gap-3 text-sm text-primary-foreground/80">
+      <CheckCircle2 className="w-4 h-4 text-dexon-yellow shrink-0" /> {p}
+    </li>
+  ))}
+      </ul>
+<div className="mt-10 flex justify-center lg:justify-start">
+  <div className="relative">
+    <div className="absolute inset-0 bg-white/10 blur-3xl rounded-full" />
+
+    <img
+      src={careersform}
+      alt="Career at Weborix"
+      className="relative w-full max-w-[320px] lg:max-w-[400px] object-contain drop-shadow-[0_25px_50px_rgba(0,0,0,0.35)]"
+    />
+  </div>
+</div>
           </div>
 
           <form
@@ -985,16 +1000,16 @@ const renderApplicationForm = (
               <Field label="Email" required>
                 <input type="email" className={inputCls} value={form.email} onChange={(e) => setForm({ ...form, email: e.target.value })} placeholder="you@email.com" />
               </Field>
-              <Field label="Phone number">
+              <Field label="Phone number" required>
                 <input type="tel" className={inputCls} value={form.phone} onChange={(e) => setForm({ ...form, phone: e.target.value })} placeholder="+91 90000 00000" />
               </Field>
-              <Field label="Gender">
+              <Field label="Gender" required>
                 <select className={inputCls} value={form.gender} onChange={(e) => setForm({ ...form, gender: e.target.value })}>
                   <option value="">Select</option>
                   {f.genderOptions.map((o) => <option key={o}>{o}</option>)}
                 </select>
               </Field>
-              <Field label="Date of birth">
+              <Field label="Date of birth" required>
                 <input type="date" className={inputCls} value={form.dob} onChange={(e) => setForm({ ...form, dob: e.target.value })} />
               </Field>
               <Field label="Interested role" required>
@@ -1034,20 +1049,28 @@ const renderApplicationForm = (
                   />
                 </Field>
               </div>
-              <div className="sm:col-span-2">
-                <label className="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-dashed border-border bg-muted/40 cursor-pointer hover:bg-muted transition-colors text-sm text-muted-foreground">
-                  <Upload className="w-4 h-4" />
-                  <span className="truncate">
-                    {form.resumeName || "Upload resume (PDF, DOC, DOCX)"}
-                  </span>
-                  <input
-                    type="file"
-                    accept=".pdf,.doc,.docx"
-                    className="hidden"
-                    onChange={(e) => setForm({ ...form, resumeName: e.target.files?.[0]?.name ?? "" })}
-                  />
-                </label>
-              </div>
+                <Field label="Resume" required>
+                  <label className="flex items-center gap-3 px-4 py-3 rounded-xl border-2 border-dashed border-border bg-muted/40 cursor-pointer hover:bg-muted transition-colors text-sm text-muted-foreground">
+                    <Upload className="w-4 h-4" />
+
+                    <span className="truncate">
+                      {form.resumeName || "Upload resume (PDF, DOC, DOCX)"}
+                    </span>
+
+                    <input
+                      required
+                      type="file"
+                      accept=".pdf,.doc,.docx"
+                      className="hidden"
+                      onChange={(e) =>
+                        setForm({
+                          ...form,
+                          resumeName: e.target.files?.[0]?.name ?? "",
+                        })
+                      }
+                    />
+                  </label>
+                </Field>
             </div>
 
             <button
