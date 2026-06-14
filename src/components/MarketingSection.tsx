@@ -187,9 +187,9 @@ function MarketingDiagram() {
   const W = 560, H = 420;
 
   /* Column X positions */
-  const leftX  = 90;   // channel card centres (anchor right edge)
-  const coreX  = W / 2; // hub centre
-  const rightX = W - 90; // segment pill centres (anchor left edge)
+  const leftX  = 90;
+  const coreX  = W / 2;
+  const rightX = W - 90;
   const coreY  = H / 2;
   const coreR  = 46;
 
@@ -222,7 +222,8 @@ function MarketingDiagram() {
   }
 
   return (
-    <div ref={ref} style={{ width: "100%", maxWidth: 560, margin: "0 auto", position: "relative" }}>
+    /* ↓ Only change: added lg:max-w-[720px] to make it larger on desktop */
+    <div ref={ref} style={{ width: "100%", margin: "0 auto", position: "relative" }} className="max-w-[560px] lg:max-w-[720px]">
       <style>{`
         @keyframes pulse-dot {
           0%,100% { transform:scale(1); opacity:1; }
@@ -303,7 +304,6 @@ function MarketingDiagram() {
         ))}
 
         {/* ── Core Hub ── */}
-        {/* outer glow */}
 
         {/* spinning dashed ring */}
         <g style={{
@@ -327,7 +327,7 @@ function MarketingDiagram() {
             fill="none" stroke="#F5D54760" strokeWidth="1"
             strokeDasharray="2 14" strokeLinecap="round" />
         </g>
-        {/* solid hub */}
+        {/* solid hub — shadow glow removed */}
         <circle
           cx={coreX}
           cy={coreY}
@@ -336,7 +336,6 @@ function MarketingDiagram() {
           style={{
             opacity: inView ? 1 : 0,
             transition: "opacity .5s ease 450ms",
-            filter: "drop-shadow(0 4px 20px rgba(0,0,0,0.35))",
           }}
         />
         {/* avatar */}
@@ -430,34 +429,6 @@ function MarketingDiagram() {
             </div>
           </foreignObject>
         ))}
-
-        {/* ── Floating stat chips ── */}
-        {/* Conversion rate chip */}
-      {/*  <g style={{
-          opacity: inView ? 1 : 0,
-          transition: "opacity .5s ease 1200ms",
-          animation: inView ? "floatY 3s ease-in-out 1.2s infinite" : "none",
-        }}>
-          <rect x={coreX - 46} y={26} width="92" height="34" rx="10"
-            fill="#fff" stroke="#E5E7EB" strokeWidth="1.5"
-            style={{ filter: "drop-shadow(0 2px 8px #0000000f)" }} />
-          <text x={coreX} y={41} textAnchor="middle" fontSize="12" fontWeight="800" fill="#10B981">+34.2%</text>
-          <text x={coreX} y={55} textAnchor="middle" fontSize="10" fill="#9CA3AF">Conversion Rate</text>
-        </g>
-        {/* ROI chip */}
-      {/*  <g style={{
-          opacity: inView ? 1 : 0,
-          transition: "opacity .5s ease 1400ms",
-          animation: inView ? "floatY 3.4s ease-in-out 0.5s infinite" : "none",
-        }}>
-          <rect x={coreX - 40} y={H - 60} width="80" height="34" rx="10"
-            fill="#fff" stroke="#E5E7EB" strokeWidth="1.5"
-            style={{ filter: "drop-shadow(0 2px 8px #0000000f)" }} />
-          <text x={coreX} y={H - 44} textAnchor="middle" fontSize="12" fontWeight="800" fill="#6366F1">3.8× ROI</text>
-          <text x={coreX} y={H - 30} textAnchor="middle" fontSize="10" fill="#9CA3AF">Avg. Return</text>
-        </g>
-*/}
-        
 
         <style>{`
           @keyframes floatY {
