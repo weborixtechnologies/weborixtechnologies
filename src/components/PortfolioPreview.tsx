@@ -2,31 +2,26 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import DemoImage from "@/assets/DemoImage.avif";
+import Project1 from "@/assets/Burger.png";
 
 const items = [
   {
-    title: "PROJECT 1",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+    
+    cover: Project1,
+  },
+  {
+    cover: DemoImage,
+  },
+    {
     cover: DemoImage,
   },
   {
-    title: "PROJECT 1",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     cover: DemoImage,
   },
   {
-    title: "PROJECT 2",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     cover: DemoImage,
   },
   {
-    title: "PROJECT 3",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
-    cover: DemoImage,
-  },
-  {
-    title: "PROJECT 4",
-    desc: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
     cover: DemoImage,
   },
 ];
@@ -101,35 +96,14 @@ const PortfolioPreview = () => {
 
                   <img
                     src={item.cover}
-                    alt={item.title}
                     className={`
                       w-full h-full object-cover
-                      transition-transform duration-700
-                      ease-[cubic-bezier(0.22,1,0.36,1)]
 
-                      ${
-                        isActive
-                          ? "scale-100"
-                          : "scale-105"
-                      }
-
-                      group-hover:scale-110
                     `}
                   />
                 </div>
 
-                {/* Overlay */}
-                <div
-                  className={`
-                    absolute inset-0 transition-colors duration-500
 
-                    ${
-                      isActive
-                        ? "bg-black/55"
-                        : "bg-black/45"
-                    }
-                  `}
-                />
 
                 {/* Gradient */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent" />
@@ -155,7 +129,6 @@ const PortfolioPreview = () => {
                   {!isActive && (
                     <div className="flex items-end h-full lg:hidden">
                       <h3 className="text-white text-2xl sm:text-3xl font-black tracking-tight">
-                        {item.title}
                       </h3>
                     </div>
                   )}
@@ -175,7 +148,6 @@ const PortfolioPreview = () => {
                           translate-y-2
                         "
                       >
-                        {item.title}
                       </h3>
                     </div>
                   )}
@@ -195,12 +167,10 @@ const PortfolioPreview = () => {
                   >
                     {/* Title */}
                     <h3 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white mb-4 leading-none max-w-xl">
-                      {item.title}
                     </h3>
 
                     {/* Description */}
                     <p className="text-white/80 text-sm sm:text-base leading-relaxed max-w-md">
-                      {item.desc}
                     </p>
                   </div>
                 </div>
