@@ -13,17 +13,15 @@ const items = [
     cover: DemoImage,
   },
     {
-    cover: DemoImage,
+    cover: Project1,
   },
   {
     cover: DemoImage,
   },
   {
-    cover: DemoImage,
+    cover: Project1,
   },
-  {
-    cover: DemoImage,
-  },
+
 ];
 
 const PortfolioPreview = () => {
