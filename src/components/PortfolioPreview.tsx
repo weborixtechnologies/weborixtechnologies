@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 import DemoImage from "@/assets/DemoImage.avif";
 import Project1 from "@/assets/Burger.png";
+import Project2 from "@/assets/restaurant.png";
 
 const items = [
   {
@@ -10,13 +11,13 @@ const items = [
     cover: Project1,
   },
   {
-    cover: DemoImage,
+    cover: Project2,
   },
     {
     cover: Project1,
   },
   {
-    cover: DemoImage,
+    cover: Project2,
   },
   {
     cover: Project1,
@@ -75,7 +76,7 @@ const PortfolioPreview = () => {
                 onMouseEnter={() => setActive(i)}
                 onClick={() => setActive(i)}
                 className={`
-                  relative group overflow-hidden rounded-[30px]
+                  relative group overflow-hidden rounded-[30px] aspect-square
                   cursor-pointer
 
                   transition-[flex,height]
@@ -103,22 +104,7 @@ const PortfolioPreview = () => {
 
 
 
-                {/* Gradient */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/95 via-black/25 to-transparent" />
 
-                {/* Glow */}
-                <div
-                  className={`
-                    absolute inset-0 bg-white/[0.03]
-                    transition-opacity duration-500
-
-                    ${
-                      isActive
-                        ? "opacity-100"
-                        : "opacity-0"
-                    }
-                  `}
-                />
 
                 {/* Content */}
                 <div className="relative z-10 h-full flex flex-col justify-end p-5 sm:p-7">
